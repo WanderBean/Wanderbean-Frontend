@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 
 function SignupPage() {
-    //useStates for all fields of User Model
+    //useStates for all fields of User Model + error
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [name, setName] = useState("")
