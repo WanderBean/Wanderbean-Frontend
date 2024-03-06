@@ -18,10 +18,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/add" element={<CafeAddPage />} />
-        <Route path="/details" element={<CafeDetailsPage />} />
-        <Route path="/edit" element={<CafeEditPage />} />
-        <Route path="/list" element={<CafeListPage />} />
+        <Route path="/cafes/add" element={<CafeAddPage />} />
+        <Route path="/cafes/:id" element={<CafeDetailsPage />} />
+        <Route path="/cafes/edit/:id" element={<CafeEditPage />} />
+        <Route path="/cafes" element={<CafeListPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFoundPage />} />
