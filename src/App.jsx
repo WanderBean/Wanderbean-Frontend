@@ -16,6 +16,7 @@ import CafeListPage from "./pages/CafeListPage";
 
 // Import of all components
 import NavBar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </>
   );
 }
