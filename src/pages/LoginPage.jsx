@@ -23,11 +23,13 @@ function LoginPage() {
     const handleSubmit = (e) => {
         e.preventDefault()
         const requestBody = { email, password }
+        console.log(requestBody)
 
-        axios.post(`${database}/auth/signup`, requestBody)
+        axios.post(`${database}/auth/login`, requestBody)
             .then((response) => {
-                storeToken(response.data.authToken)  // store token in local storage
+                console.log(response)
                 authenticateUser()                   // authenticate user
+                storeToken(response.data.authToken)  // store token in local storage
                 navigate("/")                        // navigate to HP after successful login
             })
             .catch((err) => {

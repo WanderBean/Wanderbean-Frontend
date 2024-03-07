@@ -32,6 +32,7 @@ function AuthProviderWrapper(props) {
             })
             .catch((error) => {
               if (error) {
+                console.log(error)
                 setAuthError(error.response.data.message);
                 return;
               }

@@ -21,6 +21,7 @@ function SignupPage() {
     const handleSubmit = (e) => {
         e.preventDefault()
         const requestBody = { email, password, name }
+        console.log(requestBody)
 
         axios.post(`${database}/auth/signup`, requestBody)
             .then(() => {
