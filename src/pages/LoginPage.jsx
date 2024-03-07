@@ -16,7 +16,7 @@ function LoginPage() {
 
     // Variables for context, database & navigate
     const { storeToken, authenticateUser } = useContext(AuthContext);
-    const database = "http://localhost:5005"
+    const API_URL = import.meta.env.VITE_API_URL
     const navigate = useNavigate()
 
     // Handle Submit
@@ -25,7 +25,7 @@ function LoginPage() {
         const requestBody = { email, password }
         console.log(requestBody)
 
-        axios.post(`${database}/auth/login`, requestBody)
+        axios.post(`${API_URL}/auth/login`, requestBody)
             .then((response) => {
                 console.log(response)
                 authenticateUser()                   // authenticate user
@@ -66,7 +66,6 @@ function LoginPage() {
                 </div>
                 <button type="submit">Login</button>
             </form >
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <p>Not registered yet?</p>
             <Link to={"/signup"}> Sign up</Link>
         </div >
