@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import "./index.css";
 
 // Import of all pages
 import HomePage from "./pages/Homepage";
@@ -13,9 +14,13 @@ import CafeDetailsPage from "./pages/CafeDetailsPage";
 import CafeEditPage from "./pages/CafeEditPage";
 import CafeListPage from "./pages/CafeListPage";
 
+// Import of all components
+import NavBar from "./components/Navbar";
+
 function App() {
   return (
     <>
+      <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
