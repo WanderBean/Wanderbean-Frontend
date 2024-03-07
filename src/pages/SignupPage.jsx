@@ -14,7 +14,7 @@ function SignupPage() {
     const handlePassword = (e) => setPassword(e.target.value)
     const handleName = (e) => setName(e.target.value)
 
-    const database = "http://localhost:5005"
+    const API_URL = import.meta.env.VITE_API_URL
     const navigate = useNavigate()
 
     // Handle submit
@@ -23,7 +23,7 @@ function SignupPage() {
         const requestBody = { email, password, name }
         console.log(requestBody)
 
-        axios.post(`${database}/auth/signup`, requestBody)
+        axios.post(`${API_URL}/auth/signup`, requestBody)
             .then(() => {
                 navigate("/login")
             })
@@ -73,8 +73,6 @@ function SignupPage() {
                 </div>
                 <button type="submit">Create a user</button>
             </form >
-            {errorMessage && <p className="error-message">{errorMessage}</p>
-            }
             <p>Already have an account?</p>
             <Link to={"/login"}> Log in</Link>
         </div >

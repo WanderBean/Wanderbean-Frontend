@@ -30,7 +30,7 @@ function CafeAddPage() {
   // Variables for context, database & navigate
   const { storeToken, authenticateUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const database = "http://localhost:5005";
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -48,7 +48,7 @@ function CafeAddPage() {
     };
 
     axios
-      .post(`${database}/cafes`, newCafe)
+      .post(`${API_URL}/cafes`, newCafe)
       .then((response) => {
         const cafeId = response.data.id;
         const newReview = {
@@ -56,7 +56,7 @@ function CafeAddPage() {
           content: reviewContent,
         };
 
-        return axios.post(`${database}/reviews`, newReview);
+        return axios.post(`${API_URL}/reviews`, newReview);
       })
       .then((reviewResponse) => {
         console.log("Review added here: ", reviewResponse.data);
