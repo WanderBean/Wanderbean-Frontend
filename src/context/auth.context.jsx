@@ -12,6 +12,7 @@ function AuthProviderWrapper(props) {
     const [user, setUser] = useState(null)
     const [authError, setAuthError] = useState(null)
   
+    // Store the token in the local storage under the name "authToken"
     const storeToken = (token) => {
       localStorage.setItem("authToken", token)
     }

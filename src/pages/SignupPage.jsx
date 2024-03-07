@@ -27,7 +27,7 @@ function SignupPage() {
                 navigate("/login")
             })
             .catch((err) => {
-                setErrorMessage(err.response.data.message)
+                setErrorMessage(err.message)
             });
     }
 
@@ -49,7 +49,7 @@ function SignupPage() {
                 <div>
                     <label>Password
                         <input
-                            type="password"
+                            type="password"  // displays stars when typing in the pw
                             name="password"
                             id="password"
                             value={password}
@@ -61,7 +61,7 @@ function SignupPage() {
                 <div>
                     <label>Name
                         <input
-                            type="name"
+                            type="text"
                             name="name"
                             id="name"
                             value={name}
