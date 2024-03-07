@@ -31,9 +31,16 @@ function CafeAddPage() {
   const { storeToken, authenticateUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const database = "http://localhost:5005";
+  const storedToken = localStorage.getItem("authToken");
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    /*  if (!isLoggedIn) {                //authentication
+
+      navigate("/login");
+      return;
+    }*/
 
     const newCafe = {
       title,
@@ -48,19 +55,27 @@ function CafeAddPage() {
     };
 
     axios
-      .post(`${database}/cafes`, newCafe)
+      .post(`${database}/cafes`, newCafe, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+
       .then((response) => {
         const cafeId = response.data.id;
-        const newReview = {
+        console.log(cafeId);
+        /*const newReview = {
           cafeId,
           content: reviewContent,
-        };
-
-        return axios.post(`${database}/reviews`, newReview);
+        };*/
+        navigate(`/cafes/${cafeId}`);
+      })
+      /*return axios.post(`${database}/reviews`, newReview, {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        });
       })
       .then((reviewResponse) => {
         console.log("Review added here: ", reviewResponse.data);
-      })
+        navigate("/cafes"); // navigate to Cafe List Page after successful submit
+      })*/
       .catch((error) => {
         console.log("Error adding new Cafe or Review:", error);
       });
@@ -72,7 +87,7 @@ function CafeAddPage() {
       <form onSubmit={handleSubmit}>
         <div>
           <label>
-            Title
+            Name
             <input
               type="text"
               name="title"
@@ -164,7 +179,7 @@ function CafeAddPage() {
 
         <div>
           <label>
-            Review Content
+            Review
             <textarea
               name="reviewContent"
               value={reviewContent}
