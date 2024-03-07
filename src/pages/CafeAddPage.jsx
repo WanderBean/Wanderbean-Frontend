@@ -1,6 +1,6 @@
 import { AuthContext } from "../context/auth.context";
 import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function CafeAddPage() {
@@ -13,7 +13,6 @@ function CafeAddPage() {
   const [locationNeighborhood, setLocationNeighborhood] = useState("");
   const [locationAddress, setLocationAddress] = useState("");
   const [specs, setSpecs] = useState("");
-  const [reviewContent, setReviewContent] = useState("");
 
   //handler functions for the inputs
 
@@ -25,22 +24,15 @@ function CafeAddPage() {
     setLocationNeighborhood(e.target.value);
   const handlelocationAddress = (e) => setLocationAddress(e.target.value);
   const handleSpecs = (e) => setSpecs(e.target.value);
-  const handleReviewContent = (e) => setReviewContent(e.target.value);
 
   // Variables for context, database & navigate
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+
   const navigate = useNavigate();
-  const database = "http://localhost:5005";
+  const API_URL = import.meta.env.VITE_API_URL;
   const storedToken = localStorage.getItem("authToken");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    /*  if (!isLoggedIn) {                //authentication
-
-      navigate("/login");
-      return;
-    }*/
 
     const newCafe = {
       title,
@@ -55,27 +47,17 @@ function CafeAddPage() {
     };
 
     axios
-      .post(`${database}/cafes`, newCafe, {
+      .post(`${API_URL}/cafes`, newCafe, {
+        //ISSUE HERE
         headers: { Authorization: `Bearer ${storedToken}` },
       })
 
       .then((response) => {
+        console.log(response.data);
         const cafeId = response.data.id;
         console.log(cafeId);
-        /*const newReview = {
-          cafeId,
-          content: reviewContent,
-        };*/
         navigate(`/cafes/${cafeId}`);
       })
-      /*return axios.post(`${database}/reviews`, newReview, {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        });
-      })
-      .then((reviewResponse) => {
-        console.log("Review added here: ", reviewResponse.data);
-        navigate("/cafes"); // navigate to Cafe List Page after successful submit
-      })*/
       .catch((error) => {
         console.log("Error adding new Cafe or Review:", error);
       });
@@ -176,20 +158,6 @@ function CafeAddPage() {
             />
           </label>
         </div>
-
-        <div>
-          <label>
-            Review
-            <textarea
-              name="reviewContent"
-              value={reviewContent}
-              placeholder="Write a Review of the Café"
-              onChange={handleReviewContent}
-            />
-          </label>
-        </div>
-
-        {/* Tailwind Star Rating Code Here */}
 
         <button type="submit">Add a Café</button>
       </form>
