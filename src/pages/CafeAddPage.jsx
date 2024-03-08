@@ -1,4 +1,3 @@
-import { AuthContext } from "../context/auth.context";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -28,7 +27,8 @@ function CafeAddPage() {
   // Variables for context, database & navigate
 
   const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_API_URL;
+  //const API_URL = import.meta.env.VITE_API_URL;
+  const database = "http://localhost:5005";
   const storedToken = localStorage.getItem("authToken");
 
   const handleSubmit = (event) => {
@@ -47,19 +47,18 @@ function CafeAddPage() {
     };
 
     axios
-      .post(`${API_URL}/cafes`, newCafe, {
+      .post(`${database}/cafes`, newCafe, {
         //ISSUE HERE
         headers: { Authorization: `Bearer ${storedToken}` },
       })
 
       .then((response) => {
-        console.log(response.data);
-        const cafeId = response.data.id;
-        console.log(cafeId);
+        const cafeId = response.data._id;
         navigate(`/cafes/${cafeId}`);
+        //getAllCafes();
       })
       .catch((error) => {
-        console.log("Error adding new Cafe or Review:", error);
+        console.log("Error adding new Cafe:", error);
       });
   };
 
