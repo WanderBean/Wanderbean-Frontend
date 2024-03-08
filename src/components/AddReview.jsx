@@ -2,13 +2,13 @@ import { useState } from "react";
 
 function AddReview() {
   const [reviewTitle, setReviewTitle] = useState("");
-  const [reviewContent, setReviewContent] = useState("");
+  const [reviewDescription, setReviewDescription] = useState("");
 
   const handleReviewTitle = (e) => {
     setReviewTitle(e.target.value);
   };
-  const handleReviewContent = (e) => {
-    setReviewContent(e.target.value);
+  const handleReviewDescription = (e) => {
+    setReviewDescription(e.target.value);
   };
 
   return (
@@ -29,10 +29,10 @@ function AddReview() {
           Review
           <input
             type="text"
-            name="reviewContent"
-            value={reviewContent}
+            name="reviewDescription"
+            value={reviewDescription}
             placeholder="Write a Review for the Café"
-            onChange={handleReviewContent}
+            onChange={handleReviewDescription}
           />
         </label>
       </div>
