@@ -47,10 +47,21 @@ function CafeDetailsPage() {
                   </div>
                 )}
                 <div>{Array.isArray(cafe.specs) && cafe.specs.map((specs, index) => (
-                  <label key={index}>{specs}</label>
+                  <label key={index}>{specs} </label>
                 ))}</div>
               </div>
             </div>
+            {/* !!!!! REVIEW SECTION !!!!!! */}
+            <h2>Reviews from fellow coffee lovers</h2>
+            <div>{Array.isArray(cafe.reviews) && cafe.reviews.map((review, index) => (
+              <label key={index}>
+                <h3>{review.title}</h3>
+                <p>{review.description}</p>
+                {cafe.reviews.stars && cafe.reviews.stars > 0(
+                  <p>{cafe.reviews.stars}</p>
+                )}
+              </label>
+            ))}</div>
           </>
         )}
     </div>
