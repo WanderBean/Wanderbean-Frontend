@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
+import AddReview from "../components/AddReview"
 
 
 function CafeDetailsPage() {
@@ -81,6 +82,10 @@ function CafeDetailsPage() {
                 )}
               </label>
             ))}</div>
+            <div>
+            <h2>Leave us a review</h2>
+              <AddReview />
+            </div>
           </>
         )}
     </div>

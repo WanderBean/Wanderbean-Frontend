@@ -5,7 +5,7 @@ import logo from "../img/coffee-beans.png"
 
 function NavBar() {
 
-    {/* Login & Logout functionality - toggle between buttons*/}
+    {/* Login & Logout functionality - toggle between buttons depending if there is a token in localStorage*/}
 
     const { storeToken, authenticateUser } = useContext(AuthContext);
     const storedToken = localStorage.getItem("authToken")
