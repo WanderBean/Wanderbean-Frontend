@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Searchbar from "../components/Searchbar";
 
 function CafeListPage() {
   const database = "http://localhost:5005";
   const [allCafes, setAllCafes] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const getAllCafes = () => {
     axios
@@ -22,10 +24,20 @@ function CafeListPage() {
     getAllCafes();
   }, []);
 
+  const handleSearch = (event) => {
+    const searchValue = event.target.value;
+    setSearchTerm(searchValue);
+  };
+
+  const filteredCafes = allCafes.filter((cafe) =>
+    cafe.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <>
+      <Searchbar searchTerm={searchTerm} handleSearch={handleSearch} />
       <div>
-        {allCafes.map((cafe) => (
+        {filteredCafes.map((cafe) => (
           <div key={cafe._id}>
             <Link to={`/cafes/${cafe._id}`}>
               <img src={cafe.image} alt={cafe.title} />
