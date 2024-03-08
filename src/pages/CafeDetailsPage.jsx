@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import axios from "axios"
+import AddReview from "../components/AddReview"
+
 
 function CafeDetailsPage() {
   const [cafe, setCafe] = useState("");
@@ -73,29 +75,24 @@ function CafeDetailsPage() {
                     <label key={index}>{specs} </label>
                   ))}
               </div>
-              {/* !!!!! DELETE BUTTON !!!!!! */}
-              <button onClick={handleDelete}> Delete Café</button>
-              {/* !!!!! EDIT BUTTON !!!!!! */}
-              <button onClick={() => navigate("/cafes/edit/:id")}>
-                Edit Café
-              </button>
             </div>
-          </div>
-          {/* !!!!! REVIEW SECTION !!!!!! */}
-          <h2>Reviews from fellow coffee lovers</h2>
-          <div>
-            {Array.isArray(cafe.reviews) &&
-              cafe.reviews.map((review, index) => (
-                <label key={index}>
-                  <h3>{review.title}</h3>
-                  <p>{review.description}</p>
-                  {cafe.reviews.stars &&
-                    cafe.reviews.stars > 0(<p>{cafe.reviews.stars}</p>)}
-                </label>
-              ))}
-          </div>
-        </>
-      )}
+            {/* !!!!! REVIEW SECTION !!!!!! */}
+            <h2>Reviews from fellow coffee lovers</h2>
+            <div>{Array.isArray(cafe.reviews) && cafe.reviews.map((review, index) => (
+              <label key={index}>
+                <h3>{review.title}</h3>
+                <p>{review.description}</p>
+                {cafe.reviews.stars && cafe.reviews.stars > 0(
+                  <p>{cafe.reviews.stars}</p>
+                )}
+              </label>
+            ))}</div>
+            <div>
+            <h2>Leave us a review</h2>
+              <AddReview />
+            </div>
+          </>
+        )}
     </div>
   );
 }

@@ -1,15 +1,58 @@
-import { useState } from "react";
+import React, { useState } from "react"
+import { useParams } from "react-router-dom"
+import axios from "axios"
 
 function AddReview() {
-  const [reviewTitle, setReviewTitle] = useState("");
-  const [reviewDescription, setReviewDescription] = useState("");
+  const [reviewTitle, setReviewTitle] = useState("")
+  const [reviewDescription, setReviewDescription] = useState("")
 
-  const handleReviewTitle = (e) => {
-    setReviewTitle(e.target.value);
-  };
-  const handleReviewDescription = (e) => {
-    setReviewDescription(e.target.value);
-  };
+  {/* As we have to update the Cafe; Store the _id of the new review in the reviews array of the cafe */}
+  const [cafeModelReviewfield, setCafeModelReviewfield] = useState({ reviews: [] })
+
+  const handleReviewTitle = (e) => { setReviewTitle(e.target.value) }
+  const handleReviewDescription = (e) => { setReviewDescription(e.target.value) }
+
+  const API_URL = import.meta.env.VITE_API_URL
+  const storedToken = localStorage.getItem("authToken")
+  const { id } = useParams()
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const newReview = {
+      title: reviewTitle,
+      description: reviewDescription
+    }
+
+    const addReviewToCafe = {
+      reviews: [cafeModelReviewfield]
+    }
+
+     {/* First, create review. Then update cafe and add _id of review to cafe's array */}
+    axios.post(`${API_URL}/reviews/${id}`, newReview, {
+      headers: { Authorization: `Bearer ${storedToken}` },
+    })
+      .then((response) => {
+        console.log(response)
+        const reviewId = response.data._id
+        cafeModelReviewfield.reviews.push(reviewId)
+
+        {/* continue here */} 
+        return axios.put(`${API_URL}/cafes/${id}`, addReviewToCafe, {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        })
+          .then(() => {
+            console.log("I guess it worked")
+          })
+          .catch((err) => {
+            console.log(err, "Nope didnt work! Messed up updateing the cafe")
+          })
+      })
+      .catch((err) => {
+        console.log(err, "Nope didnt work! Messed up creating a review")
+      })
+  }
 
   return (
     <div>
@@ -35,6 +78,7 @@ function AddReview() {
             onChange={handleReviewDescription}
           />
         </label>
+        <button onClick={handleSubmit}> Submit a review</button>
       </div>
       {/* Tailwind Star Rating Code Here */}
     </div>
