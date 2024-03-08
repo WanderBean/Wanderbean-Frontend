@@ -11,6 +11,7 @@ function CafeDetailsPage() {
   const navigate = useNavigate()
   const { id } = useParams()
 
+  // Get data from specific cafe
   const getCafe = () => {
     axios.get(`${API_URL}/cafes/${id}`)
       .then((response) => {
@@ -25,6 +26,22 @@ function CafeDetailsPage() {
     getCafe()
   }, [id])
 
+
+
+  // Delete function
+  const storedToken = localStorage.getItem("authToken")
+
+  const handleDelete = () => {
+    axios.delete(`${API_URL}/cafes/${id}`, {
+      headers: { Authorization: `Bearer ${storedToken}` },  // Send the JWT token to requests header
+    })
+      .then((response) => {
+        navigate("/")
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  }
 
 
   return (
@@ -49,6 +66,8 @@ function CafeDetailsPage() {
                 <div>{Array.isArray(cafe.specs) && cafe.specs.map((specs, index) => (
                   <label key={index}>{specs} </label>
                 ))}</div>
+                {/* !!!!! DELETE BUTTON !!!!!! */}
+                <button onClick={handleDelete}> Delete Café</button>
               </div>
             </div>
             {/* !!!!! REVIEW SECTION !!!!!! */}
