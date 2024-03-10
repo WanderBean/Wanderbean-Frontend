@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
-import getCafe from "../pages/CafeDetailsPage"
 
-function AddReview() {
+function AddReview( {getCafe }) {
   const [reviewTitle, setReviewTitle] = useState("")
   const [reviewDescription, setReviewDescription] = useState("")
 

@@ -5,75 +5,70 @@ import AddReview from "../components/AddReview"
 
 
 function CafeDetailsPage() {
-  const [cafe, setCafe] = useState("");
 
-  const API_URL = import.meta.env.VITE_API_URL;
-  const navigate = useNavigate();
-  const { id } = useParams();
+  const [cafe, setCafe] = useState("")
+
+  const API_URL = import.meta.env.VITE_API_URL
+  const navigate = useNavigate()
+  const { id } = useParams()
 
   // Get data from specific cafe
   const getCafe = () => {
-    axios
-      .get(`${API_URL}/cafes/${id}`)
+    axios.get(`${API_URL}/cafes/${id}`)
       .then((response) => {
-        setCafe(response.data);
-        console.log(response.data);
+        setCafe(response.data)
+        console.log(response.data)
       })
       .catch((err) => {
-        setErrorMessage(err.response.data.message);
-      });
-  };
+        setErrorMessage(err.response.data.message)
+      })
+  }
   useEffect(() => {
-    getCafe();
-  }, [id]);
+    getCafe()
+  }, [id])
+
+
 
   // Delete function
-  const storedToken = localStorage.getItem("authToken");
+  const storedToken = localStorage.getItem("authToken")
 
   const handleDelete = () => {
-    axios
-      .delete(`${API_URL}/cafes/${id}`, {
-        headers: { Authorization: `Bearer ${storedToken}` }, // Send the JWT token to requests header
-      })
+    axios.delete(`${API_URL}/cafes/${id}`, {
+      headers: { Authorization: `Bearer ${storedToken}` },  // Send the JWT token to requests header
+    })
       .then((response) => {
-        navigate("/");
+        navigate("/")
       })
       .catch((err) => {
-        console.log(err);
-      });
-  };
+        console.log(err)
+      })
+  }
+
 
   return (
     <div>
-      {cafe === null ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          <div className="DetailPageContainer">
-            <div>
-              <img
-                className="CafeDetailImg"
-                src={cafe.image}
-                alt={cafe.title}
-              />
-            </div>
-            <div>
-              <h1>{cafe.title}</h1>
-              <p>{cafe.description}</p>
-              {cafe.location && cafe.location.length > 0 && (
-                <div>
-                  <p>
-                    {cafe.location[0].city}, {cafe.location[0].neighborhood}
-                  </p>
-                  <p>{cafe.location[0].adress}</p>{" "}
-                  {/* Check again as Schema was changed */}
-                </div>
-              )}
+      {cafe === null
+        ? <p>Loading...</p>
+        : (
+          <>
+            <div className="DetailPageContainer">
               <div>
-                {Array.isArray(cafe.specs) &&
-                  cafe.specs.map((specs, index) => (
-                    <label key={index}>{specs} </label>
-                  ))}
+                <img className="CafeDetailImg" src={cafe.image} alt={cafe.title} />
+              </div>
+              <div>
+                <h1>{cafe.title}</h1>
+                <p>{cafe.description}</p>
+                {cafe.location && cafe.location.length > 0 && (
+                  <div>
+                    <p>{cafe.location[0].city}, {cafe.location[0].neighborhood}</p>
+                    <p>{cafe.location[0].adress}</p>                   {/* Check again as Schema was changed */}
+                  </div>
+                )}
+                <div>{Array.isArray(cafe.specs) && cafe.specs.map((specs, index) => (
+                  <label key={index}>{specs} </label>
+                ))}</div>
+                {/* !!!!! DELETE BUTTON !!!!!! */}
+                <button onClick={handleDelete}> Delete Café</button>
               </div>
             </div>
             {/* !!!!! REVIEW SECTION !!!!!! */}
@@ -89,7 +84,7 @@ function CafeDetailsPage() {
             ))}</div>
             <div>
             <h2>Leave us a review</h2>
-              <AddReview />
+              <AddReview getCafe={getCafe} />
             </div>
           </>
         )}
@@ -97,4 +92,4 @@ function CafeDetailsPage() {
   );
 }
 
-export default CafeDetailsPage;
+export default CafeDetailsPage
