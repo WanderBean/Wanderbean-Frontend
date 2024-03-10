@@ -13,10 +13,12 @@ import CafeAddPage from "./pages/CafeAddPage";
 import CafeDetailsPage from "./pages/CafeDetailsPage";
 import CafeEditPage from "./pages/CafeEditPage";
 import CafeListPage from "./pages/CafeListPage";
+import ReviewAddPage from "./pages/ReviewAddPage";
 
 // Import of all components
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AddReview from "./components/AddReview";
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
         <Route path="/cafes/:id" element={<CafeDetailsPage />} />
         <Route path="/cafes/edit/:id" element={<CafeEditPage />} />
         <Route path="/cafes" element={<CafeListPage />} />
+        <Route path="/reviews/add" element={<ReviewAddPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFoundPage />} />

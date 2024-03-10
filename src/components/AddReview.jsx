@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
+import getCafe from "../pages/CafeDetailsPage"
 
 function AddReview() {
   const [reviewTitle, setReviewTitle] = useState("")
@@ -29,17 +30,22 @@ function AddReview() {
       reviews: [cafeModelReviewfield]
     }
 
-     {/* First, create review. Then update cafe and add _id of review to cafe's array */}
+     {/* First, create new review. 
+    Then add _id of review to cafe's array, 
+    then update the detailpage (getCafe props) so it's displayed in the UI */}
     axios.post(`${API_URL}/reviews/${id}`, newReview, {
       headers: { Authorization: `Bearer ${storedToken}` },
     })
       .then((response) => {
         console.log(response)
         const reviewId = response.data._id
+        console.log("Review ID", reviewId)
         cafeModelReviewfield.reviews.push(reviewId)
+        console.log("Cafe Model", cafeModelReviewfield)
+        getCafe ()
 
         {/* continue here */} 
-        return axios.put(`${API_URL}/cafes/${id}`, addReviewToCafe, {
+        return {/*axios.put(`${API_URL}/cafes/${id}`, addReviewToCafe, {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
           .then(() => {
@@ -47,7 +53,7 @@ function AddReview() {
           })
           .catch((err) => {
             console.log(err, "Nope didnt work! Messed up updateing the cafe")
-          })
+          }) */}
       })
       .catch((err) => {
         console.log(err, "Nope didnt work! Messed up creating a review")
