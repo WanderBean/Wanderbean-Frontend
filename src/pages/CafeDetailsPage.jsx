@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-import AddReview from "../components/AddReview";
+import React, { useState, useEffect } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import axios from "axios"
+import AddReview from "../components/AddReview"
+import { FaStar } from "react-icons/fa"
 
 function CafeDetailsPage() {
   const [cafe, setCafe] = useState("");
@@ -86,24 +87,39 @@ function CafeDetailsPage() {
             </div>
           </div>
           {/* !!!!! REVIEW SECTION !!!!!! */}
-          <h2>Reviews from fellow coffee lovers</h2>
-          <div>
-            {Array.isArray(cafe.reviews) &&
-              cafe.reviews.map((review, index) => (
-                <label key={index}>
-                  <h3>{review.title}</h3>
-                  <p>{review.description}</p>
-                  {cafe.reviews.stars &&
-                    cafe.reviews.stars > 0(<p>{cafe.reviews.stars}</p>)}
-                </label>
-              ))}
-          </div>
           {isLoggedIn === true ? (
             <div>
               <h2>Leave us a review</h2>
               <AddReview getCafe={getCafe} />
             </div>
           ) : null}
+          <h2>Reviews from fellow coffee lovers</h2>
+          <div>
+            {Array.isArray(cafe.reviews) &&
+              cafe.reviews.map((review, index) => (
+                <label key={index}>
+                  <h3>{review.title}</h3>
+                  {/* Displaying the stars depending on the rating in the database */}
+                  {[...Array(5)].map((stars, index) => {
+                    return (
+                      <label key={index}>
+                        <input
+                          type="radio"
+                          name="stars"
+                          value={index}
+                        />
+                        <FaStar
+                          className="star"
+                          size={25}
+                          color={index < review.stars ? "#ffc107" : "#e4e5e9"}
+                        />
+                      </label>
+                    )
+                  })}
+                  <p>{review.description}</p>
+                </label>
+              ))}
+          </div>
         </>
       )}
     </div>
