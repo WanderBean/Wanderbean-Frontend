@@ -48,7 +48,6 @@ function CafeAdd() {
 
     axios
       .post(`${database}/cafes`, newCafe, {
-        //ISSUE HERE
         headers: { Authorization: `Bearer ${storedToken}` },
       })
 

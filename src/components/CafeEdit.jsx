@@ -4,7 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 
 function CafeEdit() {
   const database = "http://localhost:5005";
-  const { cafeId } = useParams();
+  const { id } = useParams();
+  //console.log("cafeId:", cafeId);  Add this line to check the value
   const navigate = useNavigate();
 
   const [editTitle, setEditTitle] = useState("");
@@ -16,8 +17,9 @@ function CafeEdit() {
   const [editSpecs, setEditSpecs] = useState("");
 
   useEffect(() => {
+    console.log(`Fetching data for cafeId:, ${id}`); //outcome->Fetching data for cafeId: undefined
     axios
-      .get(`${database}/cafes/${cafeId}`)
+      .get(`${database}/cafes/${id}`) //<--seems to be the issue
       .then((response) => {
         setEditTitle(response.data.title);
         setEditImage(response.data.image);
@@ -31,7 +33,7 @@ function CafeEdit() {
         console.log("Error getting Cafe details from the API...");
         console.log(error);
       });
-  }, [cafeId]);
+  }, [id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,9 +49,9 @@ function CafeEdit() {
     };
 
     axios
-      .put(`${database}/cafes/${cafeId}`, editCafe)
+      .put(`${database}/cafes/${id}`, editCafe)
       .then((response) => {
-        navigate(`/cafes/${cafeId}`);
+        navigate(`/cafes/${id}`);
       })
       .catch((error) => {
         console.log("Error updating Café...");
