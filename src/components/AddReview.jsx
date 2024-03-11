@@ -27,7 +27,8 @@ function AddReview({ getCafe }) {
 
     const newReview = {
       title: reviewTitle,
-      description: reviewDescription
+      description: reviewDescription,
+      stars: rating
     }
 
     const addReviewToCafe = {
@@ -89,13 +90,13 @@ function AddReview({ getCafe }) {
           />
         </label>
         <div>
-          {[...Array(5)].map((star, index) => {
+          {[...Array(5)].map((stars, index) => {
               const currentRating = index + 1
             return (
               <label key={index}> 
                 <input
                   type="radio"
-                  name="rating"
+                  name="stars"
                   value= {currentRating}
                   onClick={() => setRating(currentRating)} 
                 />
@@ -106,7 +107,7 @@ function AddReview({ getCafe }) {
                 onMouseEnter={() => setHover(currentRating)}
                 onMouseLeave={() => setHover(null)}
                  />
-              </label>
+              </label> 
             )
           })}
         </div>
