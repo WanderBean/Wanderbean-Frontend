@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import Searchbar from "../components/Searchbar";
 
 function CafeList() {
-  const database = "http://localhost:5005";
+  const API_URL = import.meta.env.VITE_API_URL;
   const [allCafes, setAllCafes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   const getAllCafes = () => {
     axios
-      .get(`${database}/cafes`)
+      .get(`${API_URL}/cafes`)
       .then((response) => {
         setAllCafes(response.data);
       })

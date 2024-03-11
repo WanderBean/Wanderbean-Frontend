@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 function CafeEdit() {
-  const database = "http://localhost:5005";
+  const API_URL = import.meta.env.VITE_API_URL;
   const storedToken = localStorage.getItem("authToken");
   const { id } = useParams();
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ function CafeEdit() {
   useEffect(() => {
     console.log(`Fetching data for cafeId:, ${id}`); //outcome->Fetching data for cafeId: undefined
     axios
-      .get(`${database}/cafes/${id}`, {
+      .get(`${API_URL}/cafes/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       }) //<--seems to be the issue
       .then((response) => {
@@ -52,7 +52,7 @@ function CafeEdit() {
     };
 
     axios
-      .put(`${database}/cafes/${id}`, editCafe, {
+      .put(`${API_URL}/cafes/${id}`, editCafe, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
