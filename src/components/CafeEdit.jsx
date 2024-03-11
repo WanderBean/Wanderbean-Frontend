@@ -24,6 +24,7 @@ function CafeEdit() {
       }) //<--seems to be the issue
       .then((response) => {
         setEditTitle(response.data.title);
+
         setEditImage(response.data.image);
         setEditDescription(response.data.description);
         setEditLocationCity(response.data.location[0].city);

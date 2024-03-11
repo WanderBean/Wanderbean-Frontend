@@ -27,7 +27,8 @@ function AddReview({ getCafe }) {
 
     const newReview = {
       title: reviewTitle,
-      description: reviewDescription
+      description: reviewDescription,
+      stars: rating
     }
 
     const addReviewToCafe = {
@@ -89,15 +90,15 @@ function AddReview({ getCafe }) {
           />
         </label>
         <div>
-          {[...Array(5)].map((star, index) => {
-              const currentRating = index + 1;
+          {[...Array(5)].map((stars, index) => {
+              const currentRating = index + 1
             return (
-              <label>
+              <label key={index}> 
                 <input
                   type="radio"
-                  name="rating"
+                  name="stars"
                   value= {currentRating}
-                  onClick={() => setRating(currentRating)}
+                  onClick={() => setRating(currentRating)} 
                 />
                 <FaStar 
                 className="star"
@@ -106,12 +107,10 @@ function AddReview({ getCafe }) {
                 onMouseEnter={() => setHover(currentRating)}
                 onMouseLeave={() => setHover(null)}
                  />
-              </label>
-
+              </label> 
             )
           })}
         </div>
-
         <button onClick={handleSubmit}> Submit a review</button>
       </div>
       {/* Tailwind Star Rating Code Here */}
