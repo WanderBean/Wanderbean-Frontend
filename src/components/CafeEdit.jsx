@@ -4,8 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 
 function CafeEdit() {
   const database = "http://localhost:5005";
+  const storedToken = localStorage.getItem("authToken");
   const { id } = useParams();
-  //console.log("cafeId:", cafeId);  Add this line to check the value
   const navigate = useNavigate();
 
   const [editTitle, setEditTitle] = useState("");
@@ -19,14 +19,16 @@ function CafeEdit() {
   useEffect(() => {
     console.log(`Fetching data for cafeId:, ${id}`); //outcome->Fetching data for cafeId: undefined
     axios
-      .get(`${database}/cafes/${id}`) //<--seems to be the issue
+      .get(`${database}/cafes/${id}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      }) //<--seems to be the issue
       .then((response) => {
         setEditTitle(response.data.title);
         setEditImage(response.data.image);
         setEditDescription(response.data.description);
-        setEditLocationCity(response.data.locationCity);
-        setEditLocationNeighborhood(response.data.locationNeighborhood);
-        setEditLocationAddress(response.data.locationAddress);
+        setEditLocationCity(response.data.location[0].city);
+        setEditLocationNeighborhood(response.data.location[0].neighborhood);
+        setEditLocationAddress(response.data.location[0].address);
         setEditSpecs(response.data.specs);
       })
       .catch((error) => {
@@ -49,7 +51,9 @@ function CafeEdit() {
     };
 
     axios
-      .put(`${database}/cafes/${id}`, editCafe)
+      .put(`${database}/cafes/${id}`, editCafe, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         navigate(`/cafes/${id}`);
       })

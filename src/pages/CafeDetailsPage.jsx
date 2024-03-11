@@ -27,6 +27,7 @@ function CafeDetailsPage() {
 
   // Delete function
   const storedToken = localStorage.getItem("authToken");
+  const isLoggedIn = storedToken !== null;
 
   const handleDelete = () => {
     axios
@@ -73,12 +74,15 @@ function CafeDetailsPage() {
                     <label key={index}>{specs} </label>
                   ))}
               </div>
-              {/* !!!!! DELETE BUTTON !!!!!! */}
-              <button onClick={handleDelete}> Delete Café</button>
-              {/* !!!!! EDIT BUTTON !!!!!! */}
-              <button onClick={() => navigate(`/cafes/edit/${id}`)}>
-                Edit Café
-              </button>
+              {/* !!!!! DELETE & EDIT BUTTONS !!!!!! */}
+              {isLoggedIn === true ? (
+                <>
+                  <button onClick={() => navigate(`/cafes/edit/${id}`)}>
+                    Edit Café
+                  </button>
+                  <button onClick={handleDelete}>Delete Café</button>
+                </>
+              ) : null}
             </div>
           </div>
           {/* !!!!! REVIEW SECTION !!!!!! */}
@@ -94,10 +98,12 @@ function CafeDetailsPage() {
                 </label>
               ))}
           </div>
-          <div>
-            <h2>Leave us a review</h2>
-            <AddReview getCafe={getCafe} />
-          </div>
+          {isLoggedIn === true ? (
+            <div>
+              <h2>Leave us a review</h2>
+              <AddReview getCafe={getCafe} />
+            </div>
+          ) : null}
         </>
       )}
     </div>
