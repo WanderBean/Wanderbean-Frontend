@@ -90,14 +90,14 @@ function AddReview({ getCafe }) {
         </label>
         <div>
           {[...Array(5)].map((star, index) => {
-              const currentRating = index + 1;
+              const currentRating = index + 1
             return (
-              <label>
+              <label key={index}> 
                 <input
                   type="radio"
                   name="rating"
                   value= {currentRating}
-                  onClick={() => setRating(currentRating)}
+                  onClick={() => setRating(currentRating)} 
                 />
                 <FaStar 
                 className="star"
@@ -107,11 +107,9 @@ function AddReview({ getCafe }) {
                 onMouseLeave={() => setHover(null)}
                  />
               </label>
-
             )
           })}
         </div>
-
         <button onClick={handleSubmit}> Submit a review</button>
       </div>
       {/* Tailwind Star Rating Code Here */}

@@ -22,9 +22,12 @@ function CafeEdit() {
       .get(`${database}/cafes/${id}`) //<--seems to be the issue
       .then((response) => {
         setEditTitle(response.data.title);
+
         setEditImage(response.data.image);
         setEditDescription(response.data.description);
+
         setEditLocationCity(response.data.locationCity);
+        console.log("working")
         setEditLocationNeighborhood(response.data.locationNeighborhood);
         setEditLocationAddress(response.data.locationAddress);
         setEditSpecs(response.data.specs);
