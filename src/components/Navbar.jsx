@@ -7,24 +7,20 @@ function NavBar() {
 
     {/* Login & Logout functionality - toggle between buttons depending if there is a token in localStorage*/}
 
-    const { storeToken, authenticateUser } = useContext(AuthContext);
-    const storedToken = localStorage.getItem("authToken")
-
-    const removeToken = () => {
-        localStorage.removeItem("authToken")
-    }
-    
-    const isLoggedIn = storedToken !== null
+    const { user, isLoggedIn, logOutUser } = useContext(AuthContext);
 
     return (
         <div className="NavBar">
             <Link to="/"><img src={logo} alt="Wanderbeans Logo" /></Link>
             <Link to="/cafes">Find a Cafe</Link>
             <Link to="/signup">Signup</Link>
+            
 
             {isLoggedIn === false 
-            ? (<Link to="/login">Login</Link>)
-            : (<Link onClick={removeToken}>Logout</Link>)
+            ? 
+            (<Link to="/login">Login</Link>)
+            : 
+            (<Link onClick={logOutUser}>Logout</Link>)
             }
         </div>
     )

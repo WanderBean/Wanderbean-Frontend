@@ -99,6 +99,7 @@ function CafeDetailsPage() {
               cafe.reviews.map((review, index) => (
                 <label key={index}>
                   <h3>{review.title}</h3>
+                  <h3>{review.user}</h3>
                   {/* Displaying the stars depending on the rating in the database */}
                   {[...Array(5)].map((stars, index) => {
                     return (
