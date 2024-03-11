@@ -23,7 +23,7 @@
 .Footer img {
     max-height: 30px;
 }
-
+/*
 .DetailPageContainer {
     display: flex;
     flex-direction: row;
@@ -32,7 +32,7 @@
 .CafeDetailImg {
     max-height: 300px;
 }
-
+*/
 input[type=radio]{
     display:none;
 }
