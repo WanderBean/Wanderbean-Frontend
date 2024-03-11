@@ -1,16 +1,21 @@
 import React, { useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
+import { FaStar } from "react-icons/fa"
 
-function AddReview( {getCafe }) {
+function AddReview({ getCafe }) {
   const [reviewTitle, setReviewTitle] = useState("")
   const [reviewDescription, setReviewDescription] = useState("")
+  const [rating, setRating] = useState(null)
+  const [hover, setHover] = useState(null)
 
-  {/* As we have to update the Cafe; Store the _id of the new review in the reviews array of the cafe */}
+
+  {/* As we have to update the Cafe; Store the _id of the new review in the reviews array of the cafe */ }
   const [cafeModelReviewfield, setCafeModelReviewfield] = useState({ reviews: [] })
 
   const handleReviewTitle = (e) => { setReviewTitle(e.target.value) }
   const handleReviewDescription = (e) => { setReviewDescription(e.target.value) }
+
 
   const API_URL = import.meta.env.VITE_API_URL
   const storedToken = localStorage.getItem("authToken")
@@ -29,7 +34,7 @@ function AddReview( {getCafe }) {
       reviews: [cafeModelReviewfield]
     }
 
-     {/* First, create new review. 
+    {/* First, create new review. 
     Then add _id of review to cafe's array, 
     then update the detailpage (getCafe props) so it's displayed in the UI */}
     axios.post(`${API_URL}/reviews/${id}`, newReview, {
@@ -41,9 +46,9 @@ function AddReview( {getCafe }) {
         console.log("Review ID", reviewId)
         cafeModelReviewfield.reviews.push(reviewId)
         console.log("Cafe Model", cafeModelReviewfield)
-        getCafe ()
+        getCafe()
 
-        {/* continue here */} 
+        {/* continue here */ }
         return {/*axios.put(`${API_URL}/cafes/${id}`, addReviewToCafe, {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
@@ -83,6 +88,30 @@ function AddReview( {getCafe }) {
             onChange={handleReviewDescription}
           />
         </label>
+        <div>
+          {[...Array(5)].map((star, index) => {
+              const currentRating = index + 1;
+            return (
+              <label>
+                <input
+                  type="radio"
+                  name="rating"
+                  value= {currentRating}
+                  onClick={() => setRating(currentRating)}
+                />
+                <FaStar 
+                className="star"
+                size={25}
+                color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+                onMouseEnter={() => setHover(currentRating)}
+                onMouseLeave={() => setHover(null)}
+                 />
+              </label>
+
+            )
+          })}
+        </div>
+
         <button onClick={handleSubmit}> Submit a review</button>
       </div>
       {/* Tailwind Star Rating Code Here */}

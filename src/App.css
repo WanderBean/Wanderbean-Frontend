@@ -32,3 +32,11 @@
 .CafeDetailImg {
     max-height: 300px;
 }
+
+input[type=radio]{
+    display:none;
+}
+
+.star{
+    cursor: pointer;
+}
