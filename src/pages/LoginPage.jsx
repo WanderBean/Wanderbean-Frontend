@@ -64,6 +64,9 @@ function LoginPage() {
                         />
                     </label>
                 </div>
+                <div className="text-xs text-red italic">
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+                </div>
                 <button type="submit">Login</button>
             </form >
             <p>Not registered yet?</p>

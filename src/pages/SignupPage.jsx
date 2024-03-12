@@ -7,7 +7,7 @@ function SignupPage() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [name, setName] = useState("")
-    const [errorMessage, setErrorMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState(undefined)
 
     //Handle change 
     const handleEmail = (e) => setEmail(e.target.value)
@@ -28,7 +28,8 @@ function SignupPage() {
                 navigate("/login")
             })
             .catch((err) => {
-                setErrorMessage(err.message)
+                console.log(err.response.data.message)
+                setErrorMessage(err.response.data.message)
             });
     }
 
@@ -71,9 +72,10 @@ function SignupPage() {
                         />
                     </label>
                 </div>
+                <div className="text-xs text-red italic">
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}            </div>
                 <button type="submit">Create a user</button>
             </form >
-            <p>Already have an account?</p>
             <Link to={"/login"}> Log in</Link>
         </div >
     )
