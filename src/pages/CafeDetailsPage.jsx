@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import axios from "axios"
-import AddReview from "../components/AddReview"
-import { FaStar, FaRegCheckCircle } from "react-icons/fa"
-import { FaLocationDot } from "react-icons/fa6"
-
-
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import AddReview from "../components/AddReview";
+import { FaStar, FaRegCheckCircle } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
 
 function CafeDetailsPage() {
   const [cafe, setCafe] = useState("");
@@ -103,13 +101,14 @@ function CafeDetailsPage() {
           {/* !!!!! REVIEW SECTION !!!!!! */}
           <div className="my-10">
             {isLoggedIn === true ? (
-              <div >
-                <h2 className="text-3xl flex justify-center bg-grey pt-10">Leave us a Review</h2>
+              <div>
+                <h2 className="text-3xl">Leave us a review</h2>
                 <AddReview getCafe={getCafe} />
               </div>
-            ) : null
-            }
-            <h2 className="text-3xl flex justify-center pt-10">Reviews from fellow coffee lovers</h2>
+            ) : null}
+            <h2 className="text-3xl flex justify-center pt-10">
+              Reviews from fellow coffee lovers
+            </h2>
             {Array.isArray(cafe.reviews) &&
               cafe.reviews.map((review, index) => (
                 <label key={index}>
@@ -119,18 +118,14 @@ function CafeDetailsPage() {
                     {[...Array(5)].map((stars, index) => {
                       return (
                         <label key={index}>
-                          <input
-                            type="radio"
-                            name="stars"
-                            value={index}
-                          />
+                          <input type="radio" name="stars" value={index} />
                           <FaStar
                             className="star"
                             size={25}
                             color={index < review.stars ? "#ffc107" : "#e4e5e9"}
                           />
                         </label>
-                      )
+                      );
                     })}
                   </div>
                   <h3 className="flex items-center space-x-1 flex justify-center text-2xl">{review.title}</h3>
