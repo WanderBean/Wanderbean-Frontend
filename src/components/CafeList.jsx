@@ -36,7 +36,7 @@ function CafeList() {
   return (
     <>
       <Searchbar searchTerm={searchTerm} handleSearch={handleSearch} />
-      <div className="pt-0 pb-7 px-7 flex flex-wrap justify-center ">
+      <div className="pt-0 pb-7 px-7 flex flex-wrap justify-center mb-20 mt-10">
         {filteredCafes.map((cafe) => (
           <div
             key={cafe._id}

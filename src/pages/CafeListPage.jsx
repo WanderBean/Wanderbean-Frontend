@@ -8,12 +8,17 @@ function CafeListPage() {
 
   return (
     <>
-      {isLoggedIn === true ? (
-        <>
-          <button onClick={() => navigate(`/cafes/add`)}>Add Café</button>
-        </>
-      ) : null}
-      <CafeList />
+      <div className="m-3">
+        <h1 className="bg-black text-white uppercase text-center text-3xl m-1 px-0.5 py-0.5 font-extrabold italic">
+          Your Cafes
+        </h1>
+        {/* {isLoggedIn === true ? (
+          <>
+            <button onClick={() => navigate(`/cafes/add`)}>Add Café</button>
+          </>
+        ) : null} */}
+        <CafeList className="m-10" />
+      </div>
     </>
   );
 }
