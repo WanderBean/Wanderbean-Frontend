@@ -53,63 +53,70 @@ function CafeDetailsPage() {
       ) : (
         <>
           <div className="flex justify-center items-center">
-              <div className="grid grid-cols-2">
+            <div className="grid grid-cols-2">
+              <div className="flex justify-center p-10">
                 <img
-                  className="h-5/6"
+                  className="h-auto w-full"
                   src={cafe.image}
                   alt={cafe.title}
                 />
-                <div>
-                  <h1 className="text-5xl p-10">{cafe.title}</h1>
-                  <p className="text-1xl px-10 pb-5">{cafe.description}</p>
-                  {cafe.location && cafe.location.length > 0 && (
-                    <div className="px-10">
-                      <p>
-                        <FaLocationDot className="inline mr-1" />
-                        {cafe.location[0].city}, {cafe.location[0].neighborhood}
-                      </p>
-                      <p>{cafe.location[0].address}</p>{" "}
-                      {/* Check again as Schema was changed */}
-                    </div>
-                  )}
-                  <div className="px-10">
-                    <FaRegCheckCircle className="inline mr-1" />
+              </div>
 
-                    {Array.isArray(cafe.specs) &&
-                      cafe.specs.map((specs, index) => (
-                        <label key={index}>{specs}. </label>
-                      ))}
+              <div>
+                <h1 className="text-5xl p-10 flex justify-center">{cafe.title}</h1>
+                <p className="text-1xl px-10 pb-5 flex justify-center">{cafe.description}</p>
+                {cafe.location && cafe.location.length > 0 && (
+                  <div className="px-10 flex justify-center">
+                    <p>
+                      <FaLocationDot className="inline mr-1" />
+                      {cafe.location[0].city}, {cafe.location[0].neighborhood}
+                    </p>
+                    <p>{cafe.location[0].address}</p>{" "}
+                    {/* Check again as Schema was changed */}
                   </div>
+                )}
+                <div className="px-10 flex justify-center">
+                  <FaRegCheckCircle className="inline mr-1" />
 
-                  {/* !!!!! DELETE & EDIT BUTTONS !!!!!! */}
-                  {isLoggedIn === true ? (
-                    <div className="px-10 py-5">
-                      <button className="bg-black hover:bg-black-100 text-white font-semibold py-2 px-4 border border-black-200 shadow"
-                        onClick={() => navigate(`/cafes/edit/${id}`)}>Edit Café</button>
+                  {Array.isArray(cafe.specs) &&
+                    cafe.specs.map((specs, index) => (
+                      <label key={index}>{specs}. </label>
+                    ))}
+                </div>
+
+                {/* !!!!! DELETE & EDIT BUTTONS !!!!!! */}
+                {isLoggedIn === true ? (
+                  <div className="px-10 py-5 flex justify-center">
+                    <div className="flex flex-col sm:flex-row">
                       <button className="bg-white hover:bg-gray-100 text-gray font-semibold py-2 px-4 border border-gray-200 shadow"
                         onClick={handleDelete}>Delete Café</button>
+                      <button className="bg-black hover:bg-black-100 text-white font-semibold py-2 px-4 border border-black-200 shadow"
+                        onClick={() => navigate(`/cafes/edit/${id}`)}>Edit Café</button>
                     </div>
-                  ) : null}
-                </div>
+
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
 
           {/* !!!!! REVIEW SECTION !!!!!! */}
-          <div className="">
+          <div className="my-10">
             {isLoggedIn === true ? (
               <div >
-                <h2 className="text-3xl">Leave us a review</h2>
+                <h2 className="text-3xl flex justify-center bg-grey pt-10">Leave us a Review</h2>
                 <AddReview getCafe={getCafe} />
               </div>
-            ) : null}
-            <h2 className="text-3xl">Reviews from fellow coffee lovers</h2>
+            ) : null
+            }
+            <h2 className="text-3xl flex justify-center pt-10">Reviews from fellow coffee lovers</h2>
             {Array.isArray(cafe.reviews) &&
               cafe.reviews.map((review, index) => (
                 <label key={index}>
-                  <h3>{review.title}</h3>
-                  <h3>{review.user}</h3>
+                  <h3 className="flex items-center space-x-1 flex justify-center text-2xl pt-10">{review.title}</h3>
+                  <h3 className="flex items-center space-x-1 flex justify-center">{review.user}</h3>
                   {/* Displaying the stars depending on the rating in the database */}
-                  <div className="flex items-center space-x-1">
+                  <div className="flex items-center space-x-1 flex justify-center">
                     {[...Array(5)].map((stars, index) => {
                       return (
                         <label key={index}>
@@ -127,7 +134,7 @@ function CafeDetailsPage() {
                       )
                     })}
                   </div>
-                  <p>{review.description}</p>
+                  <p className="flex items-center space-x-1 flex justify-center">{review.description}</p>
                 </label>
               ))}
           </div>
