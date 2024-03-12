@@ -66,60 +66,66 @@ function AddReview({ getCafe }) {
   }
 
   return (
-    <div>
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-        Title
-        <br />
-        <input
-        className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          type="text"
-          name="reviewTitle"
-          value={reviewTitle}
-          placeholder="Give your review a title"
-          onChange={handleReviewTitle}
-        />
-      </label>
+    <div className="flex justify-center bg-grey p-10">
+      <div >
+        <div>
+          
+          <label className="block mb-2 text-sm font-medium text-gray-900">
+            Title
+            <br />
+            <input
+              className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+              type="text"
+              name="reviewTitle"
+              value={reviewTitle}
+              placeholder="Give your review a title"
+              onChange={handleReviewTitle}
+            />
+          </label>
 
-      <div>
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Description
-          <br />
-          <textarea
-          className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            type="text"
-            name="reviewDescription"
-            value={reviewDescription}
-            placeholder="Write a Review for the Café"
-            onChange={handleReviewDescription}
-          />
-        </label>
-        <div className="flex items-center space-x-1">
-          {[...Array(5)].map((stars, index) => {
+          <label className=" mb-2 text-sm font-medium text-gray-900">
+            Description
+            <br />
+            <textarea
+              className="block w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+              type="text"
+              name="reviewDescription"
+              value={reviewDescription}
+              placeholder="Tell us more about your experience"
+              onChange={handleReviewDescription}
+            />
+          </label>
+
+          <div className="flex items-center align-center space-x-1 p-5">
+            {[...Array(5)].map((stars, index) => {
               const currentRating = index + 1
-            return (
-              <label key={index}> 
-                <input
-                  type="radio"
-                  name="stars"
-                  value= {currentRating}
-                  onClick={() => setRating(currentRating)} 
-                />
-                <FaStar 
-                className="star flex-row"
-                size={25}
-                color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
-                onMouseEnter={() => setHover(currentRating)}
-                onMouseLeave={() => setHover(null)}
-                 />
-              </label> 
-            )
-          })}
+              return (
+                <label key={index}>
+                  <input
+                    type="radio"
+                    name="stars"
+                    value={currentRating}
+                    onClick={() => setRating(currentRating)}
+                  />
+                  <FaStar
+                    className="star flex-row"
+                    size={25}
+                    color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+                    onMouseEnter={() => setHover(currentRating)}
+                    onMouseLeave={() => setHover(null)}
+                  />
+                </label>
+              )
+            })}
+          </div>
+
+          <button className="flex justify-center align-center bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
+            onClick={handleSubmit}> Submit a Review</button>
         </div>
-        <button className="bg-black hover:bg-black-100 text-white font-semibold py-2 px-4 border border-black-200 shadow"
-        onClick={handleSubmit}> Submit a review</button>
+        {/* Tailwind Star Rating Code Here */}
       </div>
-      {/* Tailwind Star Rating Code Here */}
     </div>
+
   );
 }
 
