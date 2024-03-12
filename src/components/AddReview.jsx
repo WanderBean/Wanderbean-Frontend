@@ -69,7 +69,7 @@ function AddReview({ getCafe }) {
     <div className="flex justify-center bg-grey p-10">
       <div >
         <div>
-          
+
           <label className="block mb-2 text-sm font-medium text-gray-900">
             Title
             <br />
@@ -94,11 +94,11 @@ function AddReview({ getCafe }) {
               placeholder="Tell us more about your experience"
               onChange={handleReviewDescription}
             />
-          </label>
-
+          </label>  
+          
           <div className="flex items-center align-center space-x-1 p-5">
             {[...Array(5)].map((stars, index) => {
-              const currentRating = index + 1
+              const currentRating = index + 1;
               return (
                 <label key={index}>
                   <input
@@ -115,17 +115,17 @@ function AddReview({ getCafe }) {
                     onMouseLeave={() => setHover(null)}
                   />
                 </label>
-              )
+              );
             })}
           </div>
-
-          <button className="flex justify-center align-center bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
-            onClick={handleSubmit}> Submit a Review</button>
+          <div className="flex justify-center align-center">
+            <button className="bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
+              onClick={handleSubmit}> Submit a Review</button>
+          </div>
         </div>
-        {/* Tailwind Star Rating Code Here */}
       </div>
+      {/* Tailwind Star Rating Code Here */}
     </div>
-
   );
 }
 

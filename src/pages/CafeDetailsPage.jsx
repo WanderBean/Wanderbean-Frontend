@@ -53,10 +53,10 @@ function CafeDetailsPage() {
       ) : (
         <>
           <div className="flex justify-center items-center">
-            <div className="grid grid-cols-2">
+            <div className="grid md:grid-cols-2 sm:grid-cols-1">
               <div className="flex justify-center p-10">
                 <img
-                  className="h-auto w-full"
+                  className="max-w-full h-auto"
                   src={cafe.image}
                   alt={cafe.title}
                 />
@@ -76,7 +76,7 @@ function CafeDetailsPage() {
                   </div>
                 )}
                 <div className="px-10 flex justify-center">
-                  <FaRegCheckCircle className="inline mr-1" />
+                  <FaRegCheckCircle className="inline mr-1 mt-1" />
 
                   {Array.isArray(cafe.specs) &&
                     cafe.specs.map((specs, index) => (
@@ -88,9 +88,9 @@ function CafeDetailsPage() {
                 {isLoggedIn === true ? (
                   <div className="px-10 py-5 flex justify-center">
                     <div className="flex flex-col sm:flex-row">
-                      <button className="bg-white hover:bg-gray-100 text-gray font-semibold py-2 px-4 border border-gray-200 shadow"
+                      <button className="bg-white hover:bg-gray-100 hover:bg-grey text-gray font-semibold py-2 px-4 border border-gray-200 shadow"
                         onClick={handleDelete}>Delete Café</button>
-                      <button className="bg-black hover:bg-black-100 text-white font-semibold py-2 px-4 border border-black-200 shadow"
+                      <button className="flex justify-center align-center bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
                         onClick={() => navigate(`/cafes/edit/${id}`)}>Edit Café</button>
                     </div>
 
@@ -113,10 +113,9 @@ function CafeDetailsPage() {
             {Array.isArray(cafe.reviews) &&
               cafe.reviews.map((review, index) => (
                 <label key={index}>
-                  <h3 className="flex items-center space-x-1 flex justify-center text-2xl pt-10">{review.title}</h3>
-                  <h3 className="flex items-center space-x-1 flex justify-center">{review.user}</h3>
+                  
                   {/* Displaying the stars depending on the rating in the database */}
-                  <div className="flex items-center space-x-1 flex justify-center">
+                  <div className="flex items-center space-x-1 flex justify-center pt-10">
                     {[...Array(5)].map((stars, index) => {
                       return (
                         <label key={index}>
@@ -134,6 +133,8 @@ function CafeDetailsPage() {
                       )
                     })}
                   </div>
+                  <h3 className="flex items-center space-x-1 flex justify-center text-2xl">{review.title}</h3>
+                  <h4 className="flex items-center space-x-1 flex justify-center text-xs italic">by {review.user}</h4>
                   <p className="flex items-center space-x-1 flex justify-center">{review.description}</p>
                 </label>
               ))}
