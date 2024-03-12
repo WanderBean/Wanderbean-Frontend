@@ -54,7 +54,7 @@ function CafeDetailsPage() {
             <div className="grid md:grid-cols-2 sm:grid-cols-1">
               <div className="flex justify-center p-10">
                 <img
-                  className="max-w-full h-auto"
+                  className="h-full w-full object-cover"
                   src={cafe.image}
                   alt={cafe.title}
                 />
@@ -69,6 +69,7 @@ function CafeDetailsPage() {
                       <FaLocationDot className="inline mr-1" />
                       {cafe.location[0].city}, {cafe.location[0].neighborhood}
                     </p>
+                    <br />
                     <p>{cafe.location[0].address}</p>{" "}
                     {/* Check again as Schema was changed */}
                   </div>
@@ -91,9 +92,9 @@ function CafeDetailsPage() {
                       <button className="flex justify-center align-center bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
                         onClick={() => navigate(`/cafes/edit/${id}`)}>Edit Café</button>
                     </div>
-
                   </div>
-                ) : null}
+                )
+                  : null}
               </div>
             </div>
           </div>
@@ -102,7 +103,7 @@ function CafeDetailsPage() {
           <div className="my-10">
             {isLoggedIn === true ? (
               <div>
-                <h2 className="text-3xl">Leave us a review</h2>
+                <h2 className="flex justify-center text-3xl bg-grey pt-10">Leave us a review</h2>
                 <AddReview getCafe={getCafe} />
               </div>
             ) : null}
@@ -112,7 +113,7 @@ function CafeDetailsPage() {
             {Array.isArray(cafe.reviews) &&
               cafe.reviews.map((review, index) => (
                 <label key={index}>
-                  
+
                   {/* Displaying the stars depending on the rating in the database */}
                   <div className="flex items-center space-x-1 flex justify-center pt-10">
                     {[...Array(5)].map((stars, index) => {
