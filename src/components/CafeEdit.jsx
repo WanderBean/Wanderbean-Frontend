@@ -17,19 +17,19 @@ function CafeEdit() {
   const [editSpecs, setEditSpecs] = useState("");
 
   useEffect(() => {
-    console.log(`Fetching data for cafeId:, ${id}`); //outcome->Fetching data for cafeId: undefined
     axios
       .get(`${API_URL}/cafes/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       }) //<--seems to be the issue
       .then((response) => {
         setEditTitle(response.data.title);
-
         setEditImage(response.data.image);
         setEditDescription(response.data.description);
-        setEditLocationCity(response.data.location[0].city);
-        setEditLocationNeighborhood(response.data.location[0].neighborhood);
-        setEditLocationAddress(response.data.location[0].address);
+
+        const location = response.data.location[0];
+        setEditLocationCity(location.city);
+        setEditLocationNeighborhood(location.neighborhood);
+        setEditLocationAddress(location.address);
         setEditSpecs(response.data.specs);
       })
       .catch((error) => {
@@ -45,9 +45,13 @@ function CafeEdit() {
       title: editTitle,
       image: editImage,
       description: editDescription,
-      locationCity: editLocationCity,
-      locationNeighborhood: editLocationNeighborhood,
-      locationAddress: editLocationAddress,
+      location: [
+        {
+          city: editLocationCity,
+          neighborhood: editLocationNeighborhood,
+          address: editLocationAddress,
+        },
+      ],
       specs: editSpecs,
     };
 
