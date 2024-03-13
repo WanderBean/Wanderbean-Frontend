@@ -49,7 +49,6 @@ function AddReview({ getCafe }) {
         console.log("Cafe Model", cafeModelReviewfield)
         getCafe()
 
-        {/* continue here */ }
         return {/*axios.put(`${API_URL}/cafes/${id}`, addReviewToCafe, {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
@@ -63,6 +62,9 @@ function AddReview({ getCafe }) {
       .catch((err) => {
         console.log(err, "Nope didnt work! Messed up creating a review")
       })
+      setReviewTitle("")
+      setReviewDescription("")
+      setRating("")
   }
 
   return (
