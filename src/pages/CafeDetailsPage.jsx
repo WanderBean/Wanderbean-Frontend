@@ -74,7 +74,7 @@ function CafeDetailsPage() {
 
                 {/* !!!!! AVERAGE RATING !!!!!! */}
                 {cafe.reviews && cafe.reviews.length > 0 && (
-                  <div className="flex justify-center items-center">
+                  <div className="flex justify-center items-center pb-7">
                     {[...Array(5)].map((stars, index) => (
                       <label key={index}>
                         <input type="radio" name="stars" value={index} />
