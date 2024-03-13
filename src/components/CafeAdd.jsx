@@ -62,100 +62,129 @@ function CafeAdd() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit}
+        className="flex-col py-10">
+        <div className="flex justify-center mt-5 text-sm font-medium text-gray-900">
+          <p className="text-sm border-solid border-2 border-black m-1 px-0.5 py-0.5 font-extrabold italic">
+            Let's start with the basics.</p>
+        </div>
+        
+        <div className="pt-3 text-sm font-medium text-gray-900">
           <label>
             Name
             <input
+              className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
               type="text"
               name="title"
               value={title}
-              placeholder="What is the Café's name?"
+              placeholder="What's the name of the café?"
               onChange={handleTitle}
             />
           </label>
         </div>
 
-        <div>
+        <div className="pt-3 text-sm font-medium text-gray-900">
           <label>
             Image
             <input
+              className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
               type="text"
               name="image"
               value={image}
-              placeholder="Add an image of the Café"
+              placeholder="Add an image URL here"
               onChange={handleImage}
             />
           </label>
         </div>
 
-        <div>
+        <div className="pt-3 text-sm font-medium text-gray-900">
           <label>
             Description
-            <input
+            <textarea
+              className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
               type="text"
               name="description"
               value={description}
-              placeholder="Add a description"
+              placeholder="Add some details about your experience"
               onChange={handleDescription}
             />
           </label>
         </div>
 
-        <div>
-          Location
+        <div className="flex justify-center mt-5 text-sm font-medium text-gray-900">
+          <p className="text-sm border-solid border-2 border-black m-1 px-0.5 py-0.5 font-extrabold italic">
+            Where is it located?</p>
+        </div>
+
+        <div className="flex-col text-sm font-medium text-gray-900">
           <div>
             <label>
               City
               <input
+                className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                 type="text"
                 name="locationCity"
                 value={locationCity}
-                placeholder="In which City is the Café?"
+                placeholder="Add the city here, e.g. Berlin"
                 onChange={handleLocationCity}
               />
             </label>
           </div>
+
           <div>
-            <label>
-              Neighborhood
-              <input
-                type="text"
-                name="locationNeighborhood"
-                value={locationNeighborhood}
-                placeholder="In which Neighborhood is the Café?"
-                onChange={handlelocationNeighborhood}
-              />
-            </label>
+            <div className="pt-3 text-sm font-medium text-gray-900">
+              <label>
+                Neighborhood
+                <input
+                  className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+                  type="text"
+                  name="locationNeighborhood"
+                  value={locationNeighborhood}
+                  placeholder="Add the neighborhood here, e.g. Spandau"
+                  onChange={handlelocationNeighborhood}
+                />
+              </label>
+            </div>
           </div>
-          <div>
+
+          <div className="pt-3 text-sm font-medium text-gray-900">
             <label>
               Address
               <input
+                className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                 type="text"
                 name="locationAddress"
                 value={locationAddress}
-                placeholder="What is the Address of the Café?"
+                placeholder="Add the exact address here"
                 onChange={handlelocationAddress}
               />
             </label>
           </div>
         </div>
 
-        <div>
+        <div className="flex justify-center mt-5 text-sm font-medium text-gray-900">
+          <p className="text-sm border-solid border-2 border-black m-1 px-0.5 py-0.5 font-extrabold italic">
+            What makes it special?</p>
+        </div>
+
+        <div className="pb-3 pt-3 text-sm font-medium text-gray-900">
           <label>
-            Specifics
             <input
+              className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
               type="text"
               name="specs"
               value={specs}
-              placeholder="Add specific information about the Café"
+              placeholder="Add some details & highlights here"
               onChange={handleSpecs}
             />
           </label>
         </div>
 
-        <button type="submit">Add a Café</button>
+        <div className="flex justify-center py-5">
+          <button
+            className="flex justify-center align-center bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
+            type="submit">Add a Café</button>
+        </div>
       </form>
     </>
   );

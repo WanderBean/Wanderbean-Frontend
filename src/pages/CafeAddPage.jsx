@@ -3,8 +3,11 @@ import CafeAdd from "../components/CafeAdd";
 function CafeAddPage() {
   return (
     <>
-      <h1>Add a Café to your list</h1>
-      <CafeAdd />
+      <h1 className="bg-black text-white uppercase text-center text-3xl m-1 px-0.5 py-0.5 font-extrabold italic">
+        Add a Cafe to your list</h1>
+      <div className="flex justify-center">
+        <CafeAdd />
+      </div>
     </>
   );
 }

@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 input[type="radio"] {
   display: none;
 }

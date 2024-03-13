@@ -38,13 +38,15 @@ function LoginPage() {
     }
 
     return (
-        <div className="flex flex-col align justify-center">
-            <h1 className="text-5xl p-10 flex justify-center">Welcome back. Log in. </h1>
+        <div>
+            <h1 className="bg-black text-white uppercase text-center text-3xl m-1 px-0.5 py-0.5 font-extrabold italic"
+            >Welcome back. Log in. </h1>
             <form onSubmit={handleSubmit} >
-                <div className="flex justify-center mb-2 text-sm font-medium text-gray-900">
+                <div className="flex justify-center pt-10 text-sm font-medium text-gray-900">
                     <label>Email
+                    <br/>
                         <input
-                            className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+                            className="p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                             type="email"
                             name="email"
                             value={email}
@@ -53,10 +55,11 @@ function LoginPage() {
                         />
                     </label>
                 </div>
-                <div className="flex justify-center text-sm font-medium text-gray-900">
+                <div className="flex justify-center pt-3 text-sm font-medium text-gray-900">
                     <label>Password
+                        <br/>
                         <input
-                            className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+                            className="p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                             type="password"
                             name="password"
                             id="password"
@@ -77,7 +80,8 @@ function LoginPage() {
             </form >
             <div className="flex justify-center pb-10">
                 <p>Not registered yet?</p>
-                <Link className="font-semibold underline" to={"/signup"}> Sign up</Link>
+                <br />
+                <Link className="font-semibold underline" to={"/signup"}> Sign up.</Link>                
             </div>
         </div >
     )

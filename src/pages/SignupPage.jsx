@@ -34,12 +34,14 @@ function SignupPage() {
     }
 
     return (
-        <div className="flex flex-col align justify-center">
-            <h1 className="text-5xl p-10 flex justify-center">New here? Sign up.</h1>
-            <form onSubmit={handleSubmit} >
-                <div className="flex justify-center mb-2 text-sm font-medium text-gray-900">
+        <div>
+            <h1 className="bg-black text-white uppercase text-center text-3xl m-1 px-0.5 py-0.5 font-extrabold italic">
+                New here? Sign up.</h1>
+            <form onSubmit={handleSubmit}>
+                <div className="flex justify-center pt-10 text-sm font-medium text-gray-900">
                     <label>
                         Email
+                        <br/>
                         <input
                             className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                             type="email"
@@ -50,11 +52,12 @@ function SignupPage() {
                         />
                     </label>
                 </div>
-                <div className="flex justify-center text-sm font-medium text-gray-900">
+                <div className="flex justify-center pt-3 text-sm font-medium text-gray-900">
                     <label>
-                        Password
+                        Password*
+                        <br/>
                         <input
-                            className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+                            className="p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                             type="password"  // displays stars when typing in the pw
                             name="password"
                             id="password"
@@ -65,12 +68,12 @@ function SignupPage() {
                     </label>
                     
                 </div>
-                <p className="flex justify-center mb-2 text-xs italic">Min. 6 characters, number, lowercase + uppercase letter.</p>
-                <div className="flex justify-center mb-2 text-sm font-medium text-gray-900">
+                <div className="flex justify-center pt-3 text-sm font-medium text-gray-900">
                     <label>
                         Name
+                        <br/>
                         <input
-                            className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+                            className="p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                             type="text"
                             name="name"
                             id="name"
@@ -88,12 +91,15 @@ function SignupPage() {
                 className="flex justify-center align-center bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
                 type="submit">Create a User</button>
                 </div>
+
             </form >
+    
             <div className="flex justify-center pb-10">
                 <p>Already have a profile?</p>
             <Link className="font-semibold underline" to={"/login"}>Log in here.</Link>
             </div>
-            
+            <p className="flex justify-center mb-2 text-xs italic">* Password: min. 6 characters, number, lowercase + uppercase letter.</p>
+
         </div >
     )
 }

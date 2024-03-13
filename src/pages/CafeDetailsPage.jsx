@@ -125,15 +125,15 @@ function CafeDetailsPage() {
           </div>
 
           {/* !!!!! REVIEW SECTION !!!!!! */}
-          <div className="my-10">
+          <div className="m-10">
             {isLoggedIn === true ? (
               <div>
-                <h2 className="flex justify-center text-3xl bg-grey pt-10">Leave us a review</h2>
+                <h2 className="flex justify-center text-3xl bg-grey pt-10">Leave Us a Review</h2>
                 <AddReview getCafe={getCafe} />
               </div>
             ) : null}
             <h2 className="text-3xl flex justify-center pt-10">
-              Reviews from fellow coffee lovers
+              Reviews from Fellow Coffee Lovers
             </h2>
             {Array.isArray(cafe.reviews) &&
               cafe.reviews.map((review, index) => (
