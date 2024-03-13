@@ -63,6 +63,9 @@ function AddReview({ getCafe }) {
       .catch((err) => {
         console.log(err, "Nope didnt work! Messed up creating a review")
       })
+      setReviewTitle("")
+      setReviewDescription("")
+      setRating("")
   }
 
   return (

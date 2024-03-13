@@ -44,6 +44,15 @@ function CafeDetailsPage() {
       });
   };
 
+  // Calculate average Rating out of all reviews
+  const averageRating = () => {
+    let sumOfStars = 0;
+    cafe.reviews.forEach((review) => {
+      sumOfStars += review.stars;
+    })
+    return sumOfStars / cafe.reviews.length
+  }
+
   return (
     <div>
       {cafe === null ? (
@@ -62,6 +71,24 @@ function CafeDetailsPage() {
 
               <div>
                 <h1 className="text-5xl p-10 flex justify-center">{cafe.title}</h1>
+
+                {/* !!!!! AVERAGE RATING !!!!!! */}
+                {cafe.reviews && cafe.reviews.length > 0 && (
+                  <div className="flex justify-center items-center pb-7">
+                    {[...Array(5)].map((stars, index) => (
+                      <label key={index}>
+                        <input type="radio" name="stars" value={index} />
+                        <FaStar
+                          className="star"
+                          size={25}
+                          color={index < averageRating() ? "#ffc107" : "#e4e5e9"}
+                        />
+                      </label>
+                    ))}
+                  </div>
+                )}
+
+                {/* !!!!! LOCATION !!!!!! */}
                 <p className="text-1xl px-10 pb-5 flex justify-center">{cafe.description}</p>
                 {cafe.location && cafe.location.length > 0 && (
                   <div className="px-10 flex justify-center">
@@ -69,9 +96,7 @@ function CafeDetailsPage() {
                       <FaLocationDot className="inline mr-1" />
                       {cafe.location[0].city}, {cafe.location[0].neighborhood}
                     </p>
-                    <br />
-                    <p>{cafe.location[0].address}</p>{" "}
-                    {/* Check again as Schema was changed */}
+                    <p>{cafe.location[0].address}</p>
                   </div>
                 )}
                 <div className="px-10 flex justify-center">

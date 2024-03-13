@@ -34,12 +34,14 @@ function SignupPage() {
     }
 
     return (
-        <div>
-            <h1>Please sign up!</h1>
+        <div className="flex flex-col align justify-center">
+            <h1 className="text-5xl p-10 flex justify-center">New here? Sign up.</h1>
             <form onSubmit={handleSubmit} >
-                <div>
-                    <label>Email
+                <div className="flex justify-center mb-2 text-sm font-medium text-gray-900">
+                    <label>
+                        Email
                         <input
+                            className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                             type="email"
                             name="email"
                             value={email}
@@ -48,9 +50,11 @@ function SignupPage() {
                         />
                     </label>
                 </div>
-                <div>
-                    <label>Password
+                <div className="flex justify-center text-sm font-medium text-gray-900">
+                    <label>
+                        Password
                         <input
+                            className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                             type="password"  // displays stars when typing in the pw
                             name="password"
                             id="password"
@@ -59,10 +63,14 @@ function SignupPage() {
                             onChange={handlePassword}
                         />
                     </label>
+                    
                 </div>
-                <div>
-                    <label>Name
+                <p className="flex justify-center mb-2 text-xs italic">Min. 6 characters, number, lowercase + uppercase letter.</p>
+                <div className="flex justify-center mb-2 text-sm font-medium text-gray-900">
+                    <label>
+                        Name
                         <input
+                            className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                             type="text"
                             name="name"
                             id="name"
@@ -72,11 +80,20 @@ function SignupPage() {
                         />
                     </label>
                 </div>
-                <div className="text-xs text-red italic">
-                    {errorMessage && <p className="error-message">{errorMessage}</p>}            </div>
-                <button type="submit">Create a user</button>
+                <div className="flex justify-center text-xs text-red italic">
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+                </div>
+                <div className="flex justify-center py-5">
+                <button 
+                className="flex justify-center align-center bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
+                type="submit">Create a User</button>
+                </div>
             </form >
-            <Link to={"/login"}> Log in</Link>
+            <div className="flex justify-center pb-10">
+                <p>Already have a profile?</p>
+            <Link className="font-semibold underline" to={"/login"}>Log in here.</Link>
+            </div>
+            
         </div >
     )
 }

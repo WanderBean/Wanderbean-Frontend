@@ -38,12 +38,13 @@ function LoginPage() {
     }
 
     return (
-        <div>
-            <h1>Please login!</h1>
+        <div className="flex flex-col align justify-center">
+            <h1 className="text-5xl p-10 flex justify-center">Welcome back. Log in. </h1>
             <form onSubmit={handleSubmit} >
-                <div>
+                <div className="flex justify-center mb-2 text-sm font-medium text-gray-900">
                     <label>Email
                         <input
+                            className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                             type="email"
                             name="email"
                             value={email}
@@ -52,9 +53,10 @@ function LoginPage() {
                         />
                     </label>
                 </div>
-                <div>
+                <div className="flex justify-center text-sm font-medium text-gray-900">
                     <label>Password
                         <input
+                            className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                             type="password"
                             name="password"
                             id="password"
@@ -64,13 +66,19 @@ function LoginPage() {
                         />
                     </label>
                 </div>
-                <div className="text-xs text-red italic">
+                <div className="flex justify-center text-xs text-red italic">
                     {errorMessage && <p className="error-message">{errorMessage}</p>}
                 </div>
-                <button type="submit">Login</button>
+                <div className="flex justify-center py-5">
+                    <button
+                        className="flex justify-center align-center bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
+                        type="submit">Login</button>
+                </div>
             </form >
-            <p>Not registered yet?</p>
-            <Link to={"/signup"}> Sign up</Link>
+            <div className="flex justify-center pb-10">
+                <p>Not registered yet?</p>
+                <Link className="font-semibold underline" to={"/signup"}> Sign up</Link>
+            </div>
         </div >
     )
 }
