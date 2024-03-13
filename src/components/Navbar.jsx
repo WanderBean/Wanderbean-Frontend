@@ -11,21 +11,23 @@ function NavBar() {
     <div className="m-2.5 flex flex-row w-screen items-start justify-between">
       <div className="flex items-start mr-7">
         <Link
-          className="text-3xl border-solid border-4 border-black m-1 px-0.5 py-0.5 font-extrabold italic  "
+          className="flex items-center border-solid border-4 border-black m-1 px-2 py-0.5 "
           to="/"
         >
-          {/* <img src={logo} alt="Wanderbeans Logo" /> */}WNDRBN
+          <span className="text-3xl mr-2 font-extrabold italic">WB</span>
+          <img src={logo} alt="Wanderbeans Logo" className="max-h-6" />
         </Link>
-        <Link to="/cafes" className="ml-4 underline">
-          Find a Cafe
+        <Link to="/cafes" className="ml-4 font-bold">
+          FIND
         </Link>
+        <p className="mx-2.5">|</p>
         {isLoggedIn === true ? (
           <>
             <button
               onClick={() => navigate(`/cafes/add`)}
-              className="ml-4 underline"
+              className="font-bold"
             >
-              Add Café
+              ADD CAFE
             </button>
           </>
         ) : null}
@@ -33,16 +35,18 @@ function NavBar() {
 
       {/* Login & Logout functionality - toggle between buttons*/}
       {isLoggedIn === false ? (
-        <>
-          <Link to="/signup">Signup</Link>
-          <Link to="/login" className="font-bold">
+        <div className="flex items-center">
+          <Link to="/signup" className="mr-8 italic">
+            Signup
+          </Link>
+          <Link to="/login" className="font-bold underline mr-8">
             Login
           </Link>
-        </>
+        </div>
       ) : (
-        <div className="flex items-center mr-7">
+        <div className="flex items-center">
           <p className="mr-8 italic">Hi, {user.name}!</p>
-          <Link onClick={logOutUser} className="font-bold underline">
+          <Link onClick={logOutUser} className="font-bold underline mr-8">
             Logout
           </Link>
         </div>
