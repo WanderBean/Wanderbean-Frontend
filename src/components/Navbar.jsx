@@ -17,20 +17,34 @@ function NavBar() {
           <span className="text-3xl mr-2 font-extrabold italic">WB</span>
           <img src={logo} alt="Wanderbeans Logo" className="max-h-6" />
         </Link>
-        <Link to="/cafes" className="ml-4 font-bold">
-          FIND
-        </Link>
-        <p className="mx-2.5">|</p>
-        {isLoggedIn === true ? (
+        {isLoggedIn ? (
           <>
+            <Link to="/cafes" className="ml-4 font-bold">
+              FIND CAFE
+            </Link>
+            <p className="mx-2.5">|</p>
             <button
               onClick={() => navigate(`/cafes/add`)}
               className="font-bold"
             >
               ADD CAFE
             </button>
+            <p className="mx-2.5">|</p>
+            <Link to="/about" className="font-bold">
+              ABOUT
+            </Link>
           </>
-        ) : null}
+        ) : (
+          <>
+            <Link to="/cafes" className="ml-4 font-bold">
+              FIND CAFE
+            </Link>
+            <p className="mx-2.5">|</p>
+            <Link to="/about" className="font-bold">
+              ABOUT
+            </Link>
+          </>
+        )}
       </div>
 
       {/* Login & Logout functionality - toggle between buttons*/}

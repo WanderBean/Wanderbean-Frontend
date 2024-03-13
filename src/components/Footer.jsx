@@ -5,7 +5,7 @@ import github from "../img/github-logo.png";
 
 function Footer() {
   return (
-    <div className="bg-grey w-screen flex flex-row justify-between items-start fixed bottom-0">
+    <div className="bg-grey w-screen flex flex-row justify-between items-start bottom-0">
       <Link to="/">
         <img src={logo} alt="Wanderbeans Logo" className="max-h-6 m-1" />
       </Link>
