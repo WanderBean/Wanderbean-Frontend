@@ -49,9 +49,9 @@ function CafeDetailsPage() {
     let sumOfStars = 0;
     cafe.reviews.forEach((review) => {
       sumOfStars += review.stars;
-    })
-    return sumOfStars / cafe.reviews.length
-  }
+    });
+    return sumOfStars / cafe.reviews.length;
+  };
 
   return (
     <div>
@@ -63,14 +63,16 @@ function CafeDetailsPage() {
             <div className="grid md:grid-cols-2 sm:grid-cols-1">
               <div className="flex justify-center p-10">
                 <img
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover rounded-2xl"
                   src={cafe.image}
                   alt={cafe.title}
                 />
               </div>
 
               <div>
-                <h1 className="text-5xl p-10 flex justify-center">{cafe.title}</h1>
+                <h1 className="text-5xl p-10 flex justify-center">
+                  {cafe.title}
+                </h1>
 
                 {/* !!!!! AVERAGE RATING !!!!!! */}
                 {cafe.reviews && cafe.reviews.length > 0 && (
@@ -81,7 +83,9 @@ function CafeDetailsPage() {
                         <FaStar
                           className="star"
                           size={25}
-                          color={index < averageRating() ? "#ffc107" : "#e4e5e9"}
+                          color={
+                            index < averageRating() ? "#ffc107" : "#e4e5e9"
+                          }
                         />
                       </label>
                     ))}
@@ -89,7 +93,9 @@ function CafeDetailsPage() {
                 )}
 
                 {/* !!!!! LOCATION !!!!!! */}
-                <p className="text-1xl px-10 pb-5 flex justify-center">{cafe.description}</p>
+                <p className="text-1xl px-10 pb-5 flex justify-center">
+                  {cafe.description}
+                </p>
                 {cafe.location && cafe.location.length > 0 && (
                   <div className="px-10 flex justify-center">
                     <p>
@@ -112,14 +118,21 @@ function CafeDetailsPage() {
                 {isLoggedIn === true ? (
                   <div className="px-10 py-5 flex justify-center">
                     <div className="flex flex-col sm:flex-row">
-                      <button className="bg-white hover:bg-gray-100 hover:bg-grey text-gray font-semibold py-2 px-4 border border-gray-200 shadow"
-                        onClick={handleDelete}>Delete Café</button>
-                      <button className="flex justify-center align-center bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
-                        onClick={() => navigate(`/cafes/edit/${id}`)}>Edit Café</button>
+                      <button
+                        className="bg-white hover:bg-gray-100 hover:bg-grey text-gray font-semibold py-2 px-4 border border-gray-200 shadow"
+                        onClick={handleDelete}
+                      >
+                        Delete Café
+                      </button>
+                      <button
+                        className="flex justify-center align-center bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
+                        onClick={() => navigate(`/cafes/edit/${id}`)}
+                      >
+                        Edit Café
+                      </button>
                     </div>
                   </div>
-                )
-                  : null}
+                ) : null}
               </div>
             </div>
           </div>
@@ -128,7 +141,9 @@ function CafeDetailsPage() {
           <div className="m-10">
             {isLoggedIn === true ? (
               <div>
-                <h2 className="flex justify-center text-3xl bg-grey pt-10">Leave Us a Review</h2>
+                <h2 className="flex justify-center text-3xl bg-grey pt-10">
+                  Leave Us a Review
+                </h2>
                 <AddReview getCafe={getCafe} />
               </div>
             ) : null}
@@ -138,7 +153,6 @@ function CafeDetailsPage() {
             {Array.isArray(cafe.reviews) &&
               cafe.reviews.map((review, index) => (
                 <label key={index}>
-
                   {/* Displaying the stars depending on the rating in the database */}
                   <div className="flex items-center space-x-1 flex justify-center pt-10">
                     {[...Array(5)].map((stars, index) => {
@@ -154,9 +168,15 @@ function CafeDetailsPage() {
                       );
                     })}
                   </div>
-                  <h3 className="flex items-center space-x-1 flex justify-center text-2xl">{review.title}</h3>
-                  <h4 className="flex items-center space-x-1 flex justify-center text-xs italic">by {review.user}</h4>
-                  <p className="flex items-center space-x-1 flex justify-center">{review.description}</p>
+                  <h3 className="flex items-center space-x-1 flex justify-center text-2xl">
+                    {review.title}
+                  </h3>
+                  <h4 className="flex items-center space-x-1 flex justify-center text-xs italic">
+                    by {review.user}
+                  </h4>
+                  <p className="flex items-center space-x-1 flex justify-center">
+                    {review.description}
+                  </p>
                 </label>
               ))}
           </div>

@@ -3,11 +3,11 @@ import { GrNext, GrPrevious } from "react-icons/gr";
 import logo from "../img/coffee-beans-white.png";
 
 const featuredCafes = [
-  "src/assets/images/Coffee_Collective_Copenhagen.jpg",
-  "src/assets/images/Coffee_Fuglen_Tokyo.jpg",
-  "src/assets/images/The_Barn_Berlin.jpg",
-  "src/assets/images/Topos_Bookstore_Cafe_NewYork.jpg",
-  "src/assets/images/Workshop_Coffee_Co._London.jpg",
+  "src/img/Coffee_Collective_Copenhagen.jpg",
+  "src/img/Coffee_Fuglen_Tokyo.jpg",
+  "src/img/The_Barn_Berlin.jpg",
+  "src/img/Topos_Bookstore_Cafe_NewYork.jpg",
+  "src/img/Workshop_Coffee_Co._London.jpg",
 ];
 
 function Slider() {
