@@ -5,7 +5,8 @@ import logo from "../img/coffee-beans.png";
 import { Navigate } from "react-router-dom";
 
 function NavBar() {
-  const { isAuthenticated, user, isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { isAuthenticated, user, isLoggedIn, logOutUser } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   return (
@@ -21,7 +22,7 @@ function NavBar() {
         {isLoggedIn ? (
           <>
             <Link to="/cafes" className="ml-4 font-bold">
-              FIND CAFE
+              FIND
             </Link>
             <p className="mx-2.5">|</p>
             <button
