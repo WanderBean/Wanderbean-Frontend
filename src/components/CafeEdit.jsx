@@ -70,12 +70,18 @@ function CafeEdit() {
 
   return (
     <>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div>
+        <form onSubmit={handleSubmit}
+          className="flex-col py-10">
+          <div className="flex justify-center mt-5 text-sm font-medium text-gray-900">
+            <p className="text-sm border-solid border-2 border-black m-1 px-0.5 py-0.5 font-extrabold italic">
+              Let's start with the basics.</p>
+          </div>
+
+          <div className="pt-3 text-sm font-medium text-gray-900">
             <label>
               Name
               <input
+                className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                 type="text"
                 name="title"
                 value={editTitle}
@@ -85,10 +91,11 @@ function CafeEdit() {
             </label>
           </div>
 
-          <div>
+          <div className="pt-3 text-sm font-medium text-gray-900">
             <label>
               Image
               <input
+                className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                 type="text"
                 name="image"
                 value={editImage}
@@ -98,10 +105,11 @@ function CafeEdit() {
             </label>
           </div>
 
-          <div>
+          <div className="pt-3 text-sm font-medium text-gray-900">
             <label>
               Description
-              <input
+              <textarea
+                className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                 type="text"
                 name="description"
                 value={editDescription}
@@ -111,24 +119,32 @@ function CafeEdit() {
             </label>
           </div>
 
+          <div className="flex justify-center mt-5 text-sm font-medium text-gray-900">
+            <p className="text-sm border-solid border-2 border-black m-1 px-0.5 py-0.5 font-extrabold italic">
+              Where is it located?</p>
+          </div>
+
+          <div className="flex-col text-sm font-medium text-gray-900">
+           <div>
+            <label>
+              City
+              <input
+                className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+                type="text"
+                name="locationCity"
+                value={editLocationCity}
+                placeholder="Edit City"
+                onChange={(e) => setEditLocationCity(e.target.value)}
+              />
+            </label>
+          </div>
+
           <div>
-            Location
-            <div>
-              <label>
-                City
-                <input
-                  type="text"
-                  name="locationCity"
-                  value={editLocationCity}
-                  placeholder="Edit City"
-                  onChange={(e) => setEditLocationCity(e.target.value)}
-                />
-              </label>
-            </div>
-            <div>
+            <div className="pt-3 text-sm font-medium text-gray-900">
               <label>
                 Neighborhood
                 <input
+                  className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                   type="text"
                   name="locationNeighborhood"
                   value={editLocationNeighborhood}
@@ -137,36 +153,46 @@ function CafeEdit() {
                 />
               </label>
             </div>
-            <div>
-              <label>
-                Address
-                <input
-                  type="text"
-                  name="locationAddress"
-                  value={editLocationAddress}
-                  placeholder="Edit Address"
-                  onChange={(e) => setEditLocationAddress(e.target.value)}
-                />
-              </label>
-            </div>
           </div>
-
-          <div>
+          <div className="pt-3 text-sm font-medium text-gray-900">
             <label>
-              Specifics
+              Address
               <input
+                className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                 type="text"
-                name="specs"
-                value={editSpecs}
-                placeholder="Edit specifics"
-                onChange={(e) => setEditSpecs(e.target.value)}
+                name="locationAddress"
+                value={editLocationAddress}
+                placeholder="Edit Address"
+                onChange={(e) => setEditLocationAddress(e.target.value)}
               />
             </label>
           </div>
-
-          <button type="submit">Edit the Café</button>
-        </form>
       </div>
+
+      <div className="flex justify-center mt-5 text-sm font-medium text-gray-900">
+        <p className="text-sm border-solid border-2 border-black m-1 px-0.5 py-0.5 font-extrabold italic">
+          What makes it special?</p>
+      </div>
+
+      <div className="pb-3 pt-3 text-sm font-medium text-gray-900">
+        <label>
+          <input
+            className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+            type="text"
+            name="specs"
+            value={editSpecs}
+            placeholder="Edit specifics"
+            onChange={(e) => setEditSpecs(e.target.value)}
+          />
+        </label>
+      </div>
+
+      <div className="flex justify-center py-5">
+        <button
+          className="flex justify-center align-center bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
+          type="submit">Edit the Café</button>
+      </div>
+    </form>
     </>
   );
 }

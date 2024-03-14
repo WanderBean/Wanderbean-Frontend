@@ -145,7 +145,7 @@ function CafeDetailsPage() {
                 <AddReview getCafe={getCafe} />
               </div>
             ) : null}
-            <h2 className="flex justify-center pt-10 text-3xl uppercase text-center font-bold italic">
+            <h2 className="flex justify-center pt-10 px-5 text-3xl uppercase text-center font-bold italic">
               Reviews from Fellow Coffee Lovers
             </h2>
             {Array.isArray(cafe.reviews) &&
