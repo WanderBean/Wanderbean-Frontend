@@ -8,6 +8,7 @@ function AddReview({ getCafe }) {
   const [reviewDescription, setReviewDescription] = useState("")
   const [rating, setRating] = useState(null)
   const [hover, setHover] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(undefined)
 
 
   {/* As we have to update the Cafe; Store the _id of the new review in the reviews array of the cafe */ }
@@ -62,6 +63,7 @@ function AddReview({ getCafe }) {
       })
       .catch((err) => {
         console.log(err, "Nope didnt work! Messed up creating a review")
+        setErrorMessage(err.response.data.message)
       })
     setReviewTitle("")
     setReviewDescription("")
@@ -122,8 +124,7 @@ function AddReview({ getCafe }) {
             })}
           </div>
            {/* ERROR HANDLING */}
-          <p className="flex justify-center mb-2 text-xs italic">*Field is required.</p>
-          <div className="flex justify-center text-xs text-red italic">
+          <div className="pb-2 flex justify-center text-xs text-red italic">
             {errorMessage && <p className="error-message">{errorMessage}</p>}
           </div>
 

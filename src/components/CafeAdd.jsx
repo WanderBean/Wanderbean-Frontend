@@ -58,6 +58,7 @@ function CafeAdd() {
       })
       .catch((error) => {
         console.log("Error adding new Cafe:", error);
+        setErrorMessage(err.response.data.message)
       });
   };
 
@@ -181,6 +182,7 @@ function CafeAdd() {
           </label>
         </div>
 
+        {/* ERROR HANDLING */}
         <p className="flex justify-center mb-2 text-xs italic">*Field is required.</p>
         <div className="flex justify-center text-xs text-red italic">
           {errorMessage && <p className="error-message">{errorMessage}</p>}
