@@ -93,7 +93,7 @@ function CafeDetailsPage() {
                 )}
 
                 {/* !!!!! LOCATION !!!!!! */}
-                <p className="text-1xl px-10 pb-5 flex text-center ">
+                <p className="text-1xl px-10 pb-5 flex justify-center text-center ">
                   {cafe.description}
                 </p>
                 {cafe.location && cafe.location.length > 0 && (
