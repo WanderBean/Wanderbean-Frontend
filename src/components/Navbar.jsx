@@ -2,9 +2,10 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../img/coffee-beans.png";
+import { Navigate } from "react-router-dom";
 
 function NavBar() {
-  const { user, isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { isAuthenticated, user, isLoggedIn, logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   return (

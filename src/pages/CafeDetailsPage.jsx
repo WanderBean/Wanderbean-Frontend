@@ -93,7 +93,7 @@ function CafeDetailsPage() {
                 )}
 
                 {/* !!!!! LOCATION !!!!!! */}
-                <p className="text-1xl px-10 pb-5 flex text-center ">
+                <p className="text-1xl px-10 pb-5 flex justify-center text-center ">
                   {cafe.description}
                 </p>
                 {cafe.location && cafe.location.length > 0 && (
@@ -110,7 +110,7 @@ function CafeDetailsPage() {
 
                   {Array.isArray(cafe.specs) &&
                     cafe.specs.map((specs, index) => (
-                      <label key={index}>{specs}. </label>
+                      <label key={index}>{specs}</label>
                     ))}
                 </div>
 

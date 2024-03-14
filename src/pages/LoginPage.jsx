@@ -38,7 +38,7 @@ function LoginPage() {
     }
 
     return (
-        <div>
+        <div className="mx-3 pb-20">
             <h1 className="bg-black text-white uppercase text-center text-3xl m-1 px-0.5 py-0.5 font-extrabold italic"
             >Welcome back. Log in. </h1>
             <form onSubmit={handleSubmit} >
