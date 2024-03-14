@@ -64,9 +64,9 @@ function CafeEdit() {
       .then((response) => {
         navigate(`/cafes/${id}`);
       })
-      .catch((error) => {
+      .catch((err) => {
         console.log("Error updating Café...");
-        console.log(error);
+        console.log(err);
         setErrorMessage(err.response.data.message)
       });
   };

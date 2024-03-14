@@ -56,8 +56,8 @@ function CafeAdd() {
         navigate(`/cafes/${cafeId}`);
         //getAllCafes();
       })
-      .catch((error) => {
-        console.log("Error adding new Cafe:", error);
+      .catch((err) => {
+        console.log("Error adding new Cafe:", err);
         setErrorMessage(err.response.data.message)
       });
   };
