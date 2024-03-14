@@ -6,17 +6,23 @@ import { Link } from "react-router-dom";
 const featuredCafes = [
   {
     id: "65f2b7931ac3ed6d4564eb76",
-    image: "src/img/Coffee_Collective_Copenhagen.jpg",
+    image: "public/sliderImages/Coffee_Collective_Copenhagen.jpg",
   },
-  { id: "65f2cdce1ac3ed6d4564ec91", image: "src/img/Coffee_Fuglen_Tokyo.jpg" },
-  { id: "65eee387390cd13035bd12ca", image: "src/img/The_Barn_Berlin.jpg" },
+  {
+    id: "65f2cdce1ac3ed6d4564ec91",
+    image: "public/sliderImages/Coffee_Fuglen_Tokyo.jpg",
+  },
+  {
+    id: "65eee387390cd13035bd12ca",
+    image: "public/sliderImages/The_Barn_Berlin.jpg",
+  },
   {
     id: "65f2d01f1ac3ed6d4564ecbd",
-    image: "src/img/Topos_Bookstore_Cafe_NewYork.jpg",
+    image: "public/sliderImages/Topos_Bookstore_Cafe_NewYork.jpg",
   },
   {
     id: "65f2cf451ac3ed6d4564eca6",
-    image: "src/img/Workshop_Coffee_Co._London.jpg",
+    image: "public/sliderImages/Workshop_Coffee_Co._London.jpg",
   },
 ];
 
