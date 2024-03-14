@@ -29,9 +29,16 @@ function CafeList() {
     setSearchTerm(searchValue);
   };
 
-  const filteredCafes = allCafes.filter((cafe) =>
-    cafe.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredCafes = allCafes.filter((cafe) => {
+    const titleMatch = cafe.title.toLowerCase().includes(searchTerm);
+    const cityMatch = cafe.location.some((location) =>
+      location.city.toLowerCase().includes(searchTerm)
+    );
+    const neighborhoodMatch = cafe.location.some((location) =>
+      location.neighborhood.toLowerCase().includes(searchTerm)
+    );
+    return titleMatch || cityMatch || neighborhoodMatch;
+  });
 
   return (
     <>
