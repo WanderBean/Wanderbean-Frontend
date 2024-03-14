@@ -6,9 +6,9 @@ function AboutPage() {
   return (
     <div>
       <div className="ml-3">
-      <h1 className="bg-black text-white uppercase text-center text-3xl m-1 px-0.5 py-0.5 font-extrabold italic">
-        The Story behind.
-      </h1>
+        <h1 className="bg-black text-white uppercase text-center text-3xl m-1 px-0.5 py-0.5 font-extrabold italic">
+          The Story behind.
+        </h1>
       </div>
 
       <div className="flex flex-wrap mt-10">

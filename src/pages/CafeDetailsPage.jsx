@@ -139,20 +139,20 @@ function CafeDetailsPage() {
           <div className="my-10">
             {isLoggedIn === true ? (
               <div>
-                <h2 className="flex justify-center text-3xl bg-grey pt-10">
+                <h2 className="bg-grey flex justify-center pt-10 text-3xl uppercase text-center font-bold italic">
                   Leave a Review
                 </h2>
                 <AddReview getCafe={getCafe} />
               </div>
             ) : null}
-            <h2 className="text-3xl flex justify-center pt-10">
+            <h2 className="flex justify-center pt-10 text-3xl uppercase text-center font-bold italic">
               Reviews from Fellow Coffee Lovers
             </h2>
             {Array.isArray(cafe.reviews) &&
               cafe.reviews.map((review, index) => (
                 <label key={index}>
                   {/* Displaying the stars depending on the rating in the database */}
-                  <div className="flex items-center space-x-1 flex justify-center pt-10">
+                  <div className="flex items-center space-x-1 flex justify-center pt-12">
                     {[...Array(5)].map((stars, index) => {
                       return (
                         <label key={index}>
@@ -166,13 +166,13 @@ function CafeDetailsPage() {
                       );
                     })}
                   </div>
-                  <h3 className="flex items-center space-x-1 flex justify-center text-2xl">
+                  <h3 className="flex items-center mx-10 space-x-1 flex justify-center text-2xl">
                     {review.title}
                   </h3>
                   <h4 className="flex items-center space-x-1 flex justify-center text-xs italic">
                     by {review.user}
                   </h4>
-                  <p className="flex items-center space-x-1 flex justify-center">
+                  <p className="flex items-center mx-10 space-x-1 flex justify-center">
                     {review.description}
                   </p>
                 </label>
