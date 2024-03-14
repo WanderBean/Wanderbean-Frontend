@@ -31,7 +31,7 @@ function NotFoundPage() {
                 </div>
                 <div className="w-full md:w-1/2">
                     <img
-                        className="mx-auto"
+                        className="mh-auto"
                         src={coffeeCups}
                         alt="Empty coffee cups"
                     />

@@ -110,7 +110,7 @@ function CafeDetailsPage() {
 
                   {Array.isArray(cafe.specs) &&
                     cafe.specs.map((specs, index) => (
-                      <label key={index}>{specs}. </label>
+                      <label key={index}>{specs}</label>
                     ))}
                 </div>
 
