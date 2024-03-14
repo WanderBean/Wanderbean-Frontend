@@ -70,7 +70,7 @@ function CafeDetailsPage() {
               </div>
 
               <div>
-                <h1 className="text-5xl p-10 flex justify-center">
+                <h1 className="text-5xl p-10 flex justify-center uppercase text-center font-extrabold italic">
                   {cafe.title}
                 </h1>
 
@@ -93,14 +93,14 @@ function CafeDetailsPage() {
                 )}
 
                 {/* !!!!! LOCATION !!!!!! */}
-                <p className="text-1xl px-10 pb-5 flex justify-center">
+                <p className="text-1xl px-10 pb-5 flex text-center ">
                   {cafe.description}
                 </p>
                 {cafe.location && cafe.location.length > 0 && (
-                  <div className="px-10 flex justify-center">
+                  <div className="px-10 py-5 flex justify-center">
                     <p>
                       <FaLocationDot className="inline mr-1" />
-                      {cafe.location[0].city}, {cafe.location[0].neighborhood}
+                      {cafe.location[0].city}, {cafe.location[0].neighborhood},
                     </p>
                     <p>{cafe.location[0].address}</p>
                   </div>
@@ -116,19 +116,17 @@ function CafeDetailsPage() {
 
                 {/* !!!!! DELETE & EDIT BUTTONS !!!!!! */}
                 {isLoggedIn === true ? (
-                  <div className="px-10 py-5 flex justify-center">
+                  <div className="px-10 py-10 flex justify-center">
                     <div className="flex flex-col sm:flex-row">
                       <button
-                        className="bg-white hover:bg-gray-100 hover:bg-grey text-gray font-semibold py-2 px-4 border border-gray-200 shadow"
+                        className="flex justify-center align-center bg-grey hover:bg-red text-white font-semibold py-2 px-10 border border-grey-200 shadow"
                         onClick={handleDelete}
-                      >
-                        Delete Café
+                      > Delete Café
                       </button>
                       <button
-                        className="flex justify-center align-center bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
+                        className="flex justify-center align-center bg-black hover:bg-grey text-white font-semibold py-2 px-12 border border-black-200 shadow"
                         onClick={() => navigate(`/cafes/edit/${id}`)}
-                      >
-                        Edit Café
+                      > Edit Café
                       </button>
                     </div>
                   </div>
@@ -138,11 +136,11 @@ function CafeDetailsPage() {
           </div>
 
           {/* !!!!! REVIEW SECTION !!!!!! */}
-          <div className="m-10">
+          <div className="my-10">
             {isLoggedIn === true ? (
               <div>
                 <h2 className="flex justify-center text-3xl bg-grey pt-10">
-                  Leave Us a Review
+                  Leave a Review
                 </h2>
                 <AddReview getCafe={getCafe} />
               </div>
