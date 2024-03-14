@@ -12,6 +12,7 @@ function CafeAdd() {
   const [locationNeighborhood, setLocationNeighborhood] = useState("");
   const [locationAddress, setLocationAddress] = useState("");
   const [specs, setSpecs] = useState("");
+  const [errorMessage, setErrorMessage] = useState(undefined)
 
   //handler functions for the inputs
 
@@ -68,10 +69,10 @@ function CafeAdd() {
           <p className="text-sm border-solid border-2 border-black m-1 px-0.5 py-0.5 font-extrabold italic">
             Let's start with the basics.</p>
         </div>
-        
+
         <div className="pt-3 text-sm font-medium text-gray-900">
           <label>
-            Name
+            Name*
             <input
               className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
               type="text"
@@ -85,7 +86,7 @@ function CafeAdd() {
 
         <div className="pt-3 text-sm font-medium text-gray-900">
           <label>
-            Image
+            Image*
             <input
               className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
               type="text"
@@ -99,7 +100,7 @@ function CafeAdd() {
 
         <div className="pt-3 text-sm font-medium text-gray-900">
           <label>
-            Description
+            Description*
             <textarea
               className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
               type="text"
@@ -119,7 +120,7 @@ function CafeAdd() {
         <div className="flex-col text-sm font-medium text-gray-900">
           <div>
             <label>
-              City
+              City*
               <input
                 className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                 type="text"
@@ -149,7 +150,7 @@ function CafeAdd() {
 
           <div className="pt-3 text-sm font-medium text-gray-900">
             <label>
-              Address
+              Address*
               <input
                 className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                 type="text"
@@ -178,6 +179,11 @@ function CafeAdd() {
               onChange={handleSpecs}
             />
           </label>
+        </div>
+
+        <p className="flex justify-center mb-2 text-xs italic">*Field is required.</p>
+        <div className="flex justify-center text-xs text-red italic">
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
 
         <div className="flex justify-center py-5">

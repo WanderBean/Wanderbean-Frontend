@@ -15,6 +15,8 @@ function CafeEdit() {
   const [editLocationNeighborhood, setEditLocationNeighborhood] = useState("");
   const [editLocationAddress, setEditLocationAddress] = useState("");
   const [editSpecs, setEditSpecs] = useState("");
+  const [errorMessage, setErrorMessage] = useState(undefined)
+
 
   useEffect(() => {
     axios
@@ -79,7 +81,7 @@ function CafeEdit() {
 
           <div className="pt-3 text-sm font-medium text-gray-900">
             <label>
-              Name
+              Name*
               <input
                 className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                 type="text"
@@ -93,7 +95,7 @@ function CafeEdit() {
 
           <div className="pt-3 text-sm font-medium text-gray-900">
             <label>
-              Image
+              Image*
               <input
                 className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                 type="text"
@@ -107,7 +109,7 @@ function CafeEdit() {
 
           <div className="pt-3 text-sm font-medium text-gray-900">
             <label>
-              Description
+              Description*
               <textarea
                 className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                 type="text"
@@ -127,7 +129,7 @@ function CafeEdit() {
           <div className="flex-col text-sm font-medium text-gray-900">
            <div>
             <label>
-              City
+              City*
               <input
                 className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                 type="text"
@@ -156,7 +158,7 @@ function CafeEdit() {
           </div>
           <div className="pt-3 text-sm font-medium text-gray-900">
             <label>
-              Address
+              Address*
               <input
                 className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
                 type="text"
@@ -186,6 +188,12 @@ function CafeEdit() {
           />
         </label>
       </div>
+
+      <p className="flex justify-center mb-2 text-xs italic">*Field is required.</p>
+
+        <div className="flex justify-center text-xs text-red italic">
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+                </div>
 
       <div className="flex justify-center py-5">
         <button

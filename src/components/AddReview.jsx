@@ -63,9 +63,9 @@ function AddReview({ getCafe }) {
       .catch((err) => {
         console.log(err, "Nope didnt work! Messed up creating a review")
       })
-      setReviewTitle("")
-      setReviewDescription("")
-      setRating("")
+    setReviewTitle("")
+    setReviewDescription("")
+    setRating("")
   }
 
   return (
@@ -74,7 +74,7 @@ function AddReview({ getCafe }) {
         <div>
 
           <label className="block mb-2 text-sm font-medium text-gray-900">
-            Title
+            Title*
             <br />
             <input
               className="w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
@@ -87,7 +87,7 @@ function AddReview({ getCafe }) {
           </label>
 
           <label className=" mb-2 text-sm font-medium text-gray-900">
-            Description
+            Description*
             <br />
             <textarea
               className="block w-full p-2 text-gray-900 border border-gray-300 rounded-sm bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
@@ -97,8 +97,8 @@ function AddReview({ getCafe }) {
               placeholder="Tell us more about your experience"
               onChange={handleReviewDescription}
             />
-          </label>  
-          
+          </label>
+
           <div className="flex items-center align-center space-x-1 p-5">
             {[...Array(5)].map((stars, index) => {
               const currentRating = index + 1;
@@ -121,13 +121,18 @@ function AddReview({ getCafe }) {
               );
             })}
           </div>
+           {/* ERROR HANDLING */}
+          <p className="flex justify-center mb-2 text-xs italic">*Field is required.</p>
+          <div className="flex justify-center text-xs text-red italic">
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+          </div>
+
           <div className="flex justify-center align-center">
             <button className="bg-black hover:bg-grey text-white font-semibold py-2 px-4 border border-black-200 shadow"
               onClick={handleSubmit}> Submit a Review</button>
           </div>
         </div>
       </div>
-      {/* Tailwind Star Rating Code Here */}
     </div>
   );
 }
