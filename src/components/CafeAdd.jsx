@@ -184,7 +184,7 @@ function CafeAdd() {
 
         {/* ERROR HANDLING */}
         <p className="flex justify-center mb-2 text-xs italic">*Field is required.</p>
-        <div className="flex justify-center text-xs text-red italic">
+        <div className="pb-2 flex justify-center text-xs text-red italic">
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
 
