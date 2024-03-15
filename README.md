@@ -1,8 +1,44 @@
-# React + Vite
+# Wanderbeans
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to our web application Wanderbeans. This web app should be a collection of the best coffee places around the world - sharing experiences with friends and like-minded coffeine addicts.
 
-Currently, two official plugins are available:
+How it works: Add a new cafe to a city, give details what makes them special and share your personal experience in a review.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Description
+
+<p>This is the Frontend Repo with our SPA using React. Integrating user funcionality with signup, login, logout. Fullfilling CRUD for one model (cafes), CR for another model (reviews). User is able to have more functionality when logged in (C + UD). Styling done by using Tailwind CSS, starting on responsiveness. </p>
+
+<p>Following this link, you'll find the Backend Repo: <br>
+https://github.com/WanderBean/Wanderbean-Backend </p>
+
+
+## Instructions
+
+<p>Clone this repo to your local</p>
+
+```
+git clone https://github.com/WanderBean/Wanderbean-Frontend.git
+```
+
+<p>Install all dependencies: Tailwind & Axios</p>
+
+```
+npm install axios
+```
+
+```
+npm install -D tailwindcss
+npx tailwindcss init
+```
+
+<p>Run the application on your localhost</p>
+
+```
+npm run dev
+```
+
+## Final Result
+
+<p>Following this link, you'll see the deployed App on Netlify: <br>
+https://wanderbean.netlify.app/ </p>
