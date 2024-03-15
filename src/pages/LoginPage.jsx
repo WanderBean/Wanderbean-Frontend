@@ -28,8 +28,8 @@ function LoginPage() {
         axios.post(`${API_URL}/auth/login`, requestBody)
             .then((response) => {
                 console.log(response)
-                authenticateUser()                   // authenticate user
                 storeToken(response.data.authToken)  // store token in local storage
+                authenticateUser()                   // authenticate user
                 navigate("/")                        // navigate to HP after successful login
             })
             .catch((err) => {
