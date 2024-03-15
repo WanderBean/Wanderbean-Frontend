@@ -1,4 +1,4 @@
-# Wanderbeans
+# Wanderbeans - Frontend Repo
 
 Welcome to our web application Wanderbeans. This web app should be a collection of the best coffee places around the world - sharing experiences with friends and like-minded coffeine addicts.
 
